@@ -145,7 +145,7 @@ def get_fight_statistics(fight, fight_info):
         fight_list = fight_statistic.find_all("li")
         for fight_in_list in fight_list:
             lhs_rhs_values = fight_in_list.find_all("div", class_="MMAMatchup__Stat ns8 MMAMatchup__Stat__Text")
-            lhs_rhs_array = [lhs_rhs_value.text for lhs_rhs_values in lhs_rhs_values]
+            lhs_rhs_array = [lhs_rhs_values.text for lhs_rhs_values in lhs_rhs_values]
             if len(lhs_rhs_array) == 2:
                 fighter_1_value = lhs_rhs_array[0]
                 fighter_2_value = lhs_rhs_array[1]
@@ -157,7 +157,7 @@ def get_fight_statistics(fight, fight_info):
     return fight_info
 
 
-def load_all_fight_buttons(page, max_clicks=10):
+def load_all_fight_buttons(page, max_clicks=100):
     """
     Input:
         page (playwright.sync_api.Page): The Playwright page object.
@@ -176,18 +176,54 @@ def load_all_fight_buttons(page, max_clicks=10):
         )
     """
     print("\n[DEBUG] Start: load_all_fight_buttons")
-    for i in range(max_clicks):
+    clicks_done = 0
+    
+    while clicks_done < max_clicks:
         try:
-            page.wait_for_selector("div[data-testid='gameStripBarCaret']", state="visible", timeout=5000)
-            page.evaluate("document.querySelector('div[data-testid=\"gameStripBarCaret\"]').click()")
-            time.sleep(2)  # let new content load
-            print(f"[DEBUG] Clicked 'Load More' button #{i+1}")
+            # Find all visible 'Load More' buttons
+            page.wait_for_selector("div[data-testid='gameStripBarCaret']", state="visible", timeout=3000)
+            buttons = page.query_selector_all("div[data-testid='gameStripBarCaret']")
         except PlaywrightTimeout:
-            print("[DEBUG] Timed out waiting for 'Scroll up' button. Stopping.")
+            print("[DEBUG] No 'Load More' buttons available. Stopping.")
             break
-        except Exception as e:
-            print(f"[DEBUG] No more fights or error clicking button: {e}")
+
+        if not buttons:
+            print("[DEBUG] No more 'Load More' buttons found.")
             break
+
+        # Click all currently visible buttons
+        new_clicks = 0
+        for btn in buttons:
+            if clicks_done >= max_clicks:
+                break
+            try:
+                btn.click()
+                clicks_done += 1
+                new_clicks += 1
+                print(f"[DEBUG] Clicked 'Load More' button #{clicks_done}")
+                time.sleep(1)
+            except Exception as e:
+                print(f"[DEBUG] Error clicking button: {e}")
+                break
+
+        # If none were clicked, stop
+        if new_clicks == 0:
+            print("[DEBUG] No additional buttons clicked. Stopping.")
+            break
+
+        # Scroll to bottom to allow any new buttons to load below
+        page.mouse.wheel(0, 999999)
+        time.sleep(2)
+
+        # Check if new buttons loaded  
+        try:
+            more_buttons = page.query_selector_all("div[data-testid='gameStripBarCaret']")
+            if not more_buttons or len(more_buttons) == len(buttons):
+                print("[DEBUG] No new 'Load More' buttons appeared. Stopping.")
+                break
+        except Exception:
+            break
+
     print("[DEBUG] End: load_all_fight_buttons\n")
 
 
@@ -265,7 +301,7 @@ def run_process(fight_id):
     with sync_playwright() as p:
         # 1) Launch a headless browser
         print("[DEBUG] Launching Chromium (headless)...")
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context(
             user_agent=(
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -285,7 +321,7 @@ def run_process(fight_id):
 
         time.sleep(3)  # let page load
         # 3) Click the 'load more fights' button multiple times
-        load_all_fight_buttons(page, max_clicks=10)
+        load_all_fight_buttons(page, max_clicks=100)
 
         # 4) Extract HTML and parse
         print("[DEBUG] Extracting final page content for parsing.")
