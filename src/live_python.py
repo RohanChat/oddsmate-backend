@@ -193,7 +193,7 @@ def load_all_fight_buttons(page, max_clicks=100):
 
         # Click all currently visible buttons
         new_clicks = 0
-        for btn in buttons:
+        for btn in buttons[1:]:
             if clicks_done >= max_clicks:
                 break
             try:
@@ -301,7 +301,7 @@ def run_process(fight_id):
     with sync_playwright() as p:
         # 1) Launch a headless browser
         print("[DEBUG] Launching Chromium (headless)...")
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         context = browser.new_context(
             user_agent=(
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
