@@ -1,12 +1,50 @@
 import requests 
 from bs4 import BeautifulSoup
 import re
+import time
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-def get_fight_info_from_fight_id(fight_id):
+
+
+def load_all_fight_buttons(driver, max_clicks=10):
+    """
+    Input:
+        driver: selenium webdriver
+        max_clicks: int (maximum number of times to click the button)
+        
+    Output:
+        None
+        
+    Purpose:
+        This function clicks the "load more" button on the ESPN
+        fight page until all fights are loaded or the maximum number
+        of clicks is reached.
+    
+    Raises:
+        Exception: If there is an error clicking the button
+        Exception: If the button is not found after max_clicks
+    """
+    for _ in range(max_clicks):
+        try:
+            load_more_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-testid='gameStripBarCaret']")))
+            ActionChains(driver).move_to_element(load_more_button).click().perform()
+        except Exception as e:
+            print(f"Error: {e}")
+            break
+    else:
+        print("No more fights to load or button not found.")
+
+def get_fight_info_from_fight_id(html):
     """
     Input: 
-        fight_id: str (The fight id of the fight on the ESPN
-        website)
+        html: the html to parse from the selenium driver
     
     Output: 
         fights: list (dict): list of dictionaries (each dictionary contains
@@ -15,34 +53,7 @@ def get_fight_info_from_fight_id(fight_id):
     Purpose: 
         Extract the information from a fight given the fight_id 
     """
-    # Gets a fight url based on the fight id 
-    
-    fight_url = f"https://www.espn.com/mma/fightcenter/_/id/{fight_id}/league/ufc"
-    
-    
-    # Set these headers to avoid being blocked by ESPN. ESPN
-    # expects a broswer response so we need to fake it
-    
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-            "(KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
-        ),
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Connection": "keep-alive"
-    }
-    
-    # get a response from the fight url
-    response = requests.get(fight_url, headers=headers, timeout=60)
-    
-    # raise an exception if not able to get fight data  
-    if response.status_code != 200:
-        print(f"Error: Could not retrieve page for fight ID {fight_id}")
-        return None
-
-    print(f"Success: Retrieved page for fight ID {fight_id}")
-    soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
     
     # TODO: check if live fight still has class mb6. If not, change
     fight_segments = soup.find_all("div", class_="mb6")
@@ -173,6 +184,62 @@ def get_fight_statistics(fight, fight_info):
     return fight_info
             
 
-print(get_fight_info_from_fight_id(600040033))
+def run_process(fight_id):
+    """
+    Input:
+        fight_id: str (the id of the fight to get information about)
+        
+    Output:
+        None
+    
+    Purpose:
+        This function gets the information about a fight given
+        the fight_id and prints it out.
+    """
+    # service = Service(ChromeDriverManager().install())
+    # Set up Chrome options
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")  # Helps bypass detection
+
+    # Set up the driver
+    service = Service(ChromeDriverManager().install())
+    
+    time.sleep(2)
+    
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+
+    # Start DevTools session
+    driver.execute_cdp_cmd("Network.enable", {})
+
+    # Set custom headers
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+        "Referer": "https://www.google.com/",
+        "Accept-Language": "en-US,en;q=0.9",
+    }
+
+    driver.execute_cdp_cmd("Network.setExtraHTTPHeaders", {"headers": headers})
+
+# Load the page
+    
+    try:
+        url = f"https://www.espn.com/mma/fightcenter/_/id/{fight_id}/league/ufc"
+        driver.get(url)
+        load_all_fight_buttons(driver)
+        html = driver.page_source
+        fight_info = get_fight_info_from_fight_id(html)
+        print(fight_info)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        driver.close()
+        driver.quit()
+
+if __name__ == "__main__":
+    fight_id = "600040033"
+    run_process(fight_id)
+
+
+
 
     
