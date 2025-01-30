@@ -1,69 +1,244 @@
-import requests 
-from bs4 import BeautifulSoup
-import re
 import time
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import re
+from bs4 import BeautifulSoup
+from pprint import pprint
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
-
-
-def load_all_fight_buttons(driver, max_clicks=10):
+def get_fighter_names(fight, fight_info):
     """
     Input:
-        driver: selenium webdriver
-        max_clicks: int (maximum number of times to click the button)
+        fight (BeautifulSoup object): HTML segment containing fighter names.
+        fight_info (dict): Dictionary to store fight details.
+    
+    Output:
+        dict: Updated fight_info dictionary with extracted fighter names.
+    
+    Purpose:
+        Extracts and stores the names of both fighters from the fight segment.
+    
+    Expected Output:
+        A dictionary where "fighter1" and "fighter2" keys contain fighter names as nested keys.
+        If no fighters are found, an empty dictionary is returned.
+    
+    Sample Output:
+        get_fighter_names(fight, {}) -> {"fighter1": {"John Doe": {}}, "fighter2": {"Jane Smith": {}}}
+    """
+    fighters = fight.find_all("span", class_="truncate tc db")
+    fight_info["fighter1"] = {fighters[0].text: {}}
+    fight_info["fighter2"] = {fighters[1].text: {}}
+    return fight_info
+
+
+def get_final_score(fight, fight_info):
+    """
+    Input:
+        fight (BeautifulSoup object): HTML segment containing fight results.
+        fight_info (dict): Dictionary to store fight details.
+    
+    Output:
+        dict: Updated fight_info dictionary with method of victory, round, time, and timestamp.
+    
+    Purpose:
+        Parses the final fight result details including method (e.g., KO/TKO, Decision),
+        round, and fight duration. Additionally, it calculates the fight timestamp in seconds.
+    
+    Expected Output:
+        A dictionary where "method", "round", "time", and "timestamp" are extracted from the fight result.
+        If the fight result is not found, values default to None.
+    
+    Sample Output:
+        get_final_score(fight, {}) -> {"method": "KO/TKO", "round": "R3", "time": "2:30", "timestamp": 810}
+        get_final_score(fight, {}) -> {"method": None, "round": None, "time": None, "timestamp": None}
+    """
+    pattern = re.compile(
+        r"^Final(?P<method>(?:KO\/TKO|S Dec|U Dec|Sub|No Contest))"
+        r"R(?P<round>\d+),\s*(?P<time>\d+:\d+)$"
+    )
+
+    def parse_fight_result(result_str):
+        """
+        Input:
+            result_str (str): String containing fight result information.
         
+        Output:
+            tuple: (method of victory, round number, fight time) or (None, None, None) if not matched.
+        
+        Purpose:
+            Extracts the fight result details (method, round, and time) from a given string using regex.
+        
+        Explanation:
+            - Uses a regex pattern to match fight results that follow the format: "FinalKO/TKO R2, 3:45".
+            - Extracts the method of victory (e.g., "KO/TKO", "U Dec"), round number, and fight time.
+            - If the string does not match the expected format, returns (None, None, None).
+        
+        Sample Output:
+            parse_fight_result("FinalKO/TKO R3, 2:30") -> ("KO/TKO", "R3", "2:30")
+            parse_fight_result("FinalU Dec R5, 5:00") -> ("U Dec", "R5", "5:00")
+            parse_fight_result("Invalid format") -> (None, None, None)
+        """
+        match = pattern.match(result_str.strip())
+        return (match.group("method"), "R" + match.group("round"), match.group("time")) if match else (None, None, None)
+
+    fight_score = fight.find_all("div", class_="ScoreCell__Time Gamestrip__Time ScoreCell__Time--post clr-gray-01")
+    method, round_num, fight_time = parse_fight_result(fight_score[0].find("div").text) if fight_score else (None, None, None)
+
+    fight_info.update({"method": method, "round": round_num, "time": fight_time})
+
+    if round_num and fight_time:
+        try:
+            round_index = int(round_num[1]) - 1
+            mins, secs = map(int, fight_time.split(":"))
+            fight_info["timestamp"] = round_index * 5 * 60 + mins * 60 + secs
+        except ValueError:
+            fight_info["timestamp"] = None
+    return fight_info
+
+def get_round_victory_info(fight, fight_info):
+    """
+    Input:
+        fight (BeautifulSoup object): HTML segment containing victory details.
+        fight_info (dict): Dictionary to store fight details.
+    
+    Output:
+        dict: Updated fight_info dictionary with the winning fighter's name.
+    
+    Purpose:
+        Extracts and stores the fighter who won the fight.
+    
+    Expected Output:
+        If the winning fighter is found, it will be stored in `fight_info["fighter_victory"]`.
+        If no winner information is found, `fighter_victory` will be set to `None`.
+    
+    Sample Output:
+        get_round_victory_info(fight, {}) -> {"fighter_victory": "Fighter Name"}
+        get_round_victory_info(fight, {}) -> {"fighter_victory": None}
+    """
+    fight_victory = fight.find_all(attrs={"data-testid": "gameStripBarVictory"})
+    fight_info["fighter_victory"] = fight_victory[0].text if fight_victory else None
+    return fight_info
+
+def get_fight_statistics(fight, fight_info):
+    """
+    Input:
+        fight (BeautifulSoup object): HTML segment containing fight statistics.
+        fight_info (dict): Dictionary to store fight details.
+    
+    Output:
+        dict: Updated fight_info dictionary with statistics per fighter.
+    
+    Purpose:
+        Parses fight statistics such as strikes landed, control time, and takedowns,
+        and stores them under each fighter's name.
+    
+    Expected Output:
+        A dictionary with fight statistics categorized under each fighter's name.
+        If no statistics are found, an empty dictionary is returned.
+    
+    Sample Output:
+        get_fight_statistics(fight, {}) -> {
+            "fighter1": {"John Doe": {"Strikes Landed": "50", "Takedowns": "2"}},
+            "fighter2": {"Jane Smith": {"Strikes Landed": "40", "Takedowns": "1"}}
+        }
+    """
+    fight_statistics = fight.find_all(attrs={"data-wrapping": "MMAMatchup"})
+    for fight_statistic in fight_statistics:
+        fight_list = fight_statistic.find_all("li")
+        for fight_in_list in fight_list:
+            lhs_rhs_values = fight_in_list.find_all("div", class_="MMAMatchup__Stat ns8 MMAMatchup__Stat__Text")
+            lhs_rhs_array = [lhs_rhs_value.text for lhs_rhs_values in lhs_rhs_values]
+            if len(lhs_rhs_array) == 2:
+                fighter_1_value = lhs_rhs_array[0]
+                fighter_2_value = lhs_rhs_array[1]
+                key_for_information = fight_in_list.find_all("div", class_="ns9 fw-medium ttu nowrap clr-gray-04")[0].text
+                fighter_1_key = list(fight_info["fighter1"].keys())[0]
+                fighter_2_key = list(fight_info["fighter2"].keys())[0]
+                fight_info["fighter1"][fighter_1_key][key_for_information] = fighter_1_value
+                fight_info["fighter2"][fighter_2_key][key_for_information] = fighter_2_value
+    return fight_info
+
+
+def load_all_fight_buttons(page, max_clicks=10):
+    """
+    Input:
+        page (playwright.sync_api.Page): The Playwright page object.
+        max_clicks (int): Maximum number of times to click the 'Load More' button.
     Output:
         None
-        
     Purpose:
-        This function clicks the "load more" button on the ESPN
-        fight page until all fights are loaded or the maximum number
-        of clicks is reached.
-    
-    Raises:
-        Exception: If there is an error clicking the button
-        Exception: If the button is not found after max_clicks
+        Clicks the 'Load More' button on the ESPN fight page to load additional fights.
+    Expected Output:
+        None
+    Sample Output: [In case of successful button clicks in console]
+        (in console:
+            [DEBUG] Clicked 'Load More' button #1
+            [DEBUG] Clicked 'Load More' button #2
+            [DEBUG] Timed out waiting for 'Scroll up' button. Stopping.
+        )
     """
-    for _ in range(max_clicks):
+    print("\n[DEBUG] Start: load_all_fight_buttons")
+    for i in range(max_clicks):
         try:
-            load_more_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-testid='gameStripBarCaret']")))
-            ActionChains(driver).move_to_element(load_more_button).click().perform()
-        except Exception as e:
-            print(f"Error: {e}")
+            page.wait_for_selector("div[data-testid='gameStripBarCaret']", state="visible", timeout=5000)
+            page.evaluate("document.querySelector('div[data-testid=\"gameStripBarCaret\"]').click()")
+            time.sleep(2)  # let new content load
+            print(f"[DEBUG] Clicked 'Load More' button #{i+1}")
+        except PlaywrightTimeout:
+            print("[DEBUG] Timed out waiting for 'Scroll up' button. Stopping.")
             break
-    else:
-        print("No more fights to load or button not found.")
+        except Exception as e:
+            print(f"[DEBUG] No more fights or error clicking button: {e}")
+            break
+    print("[DEBUG] End: load_all_fight_buttons\n")
+
 
 def get_fight_info_from_fight_id(html):
     """
-    Input: 
-        html: the html to parse from the selenium driver
-    
-    Output: 
-        fights: list (dict): list of dictionaries (each dictionary contains
-        information about a fight)
-        
-    Purpose: 
-        Extract the information from a fight given the fight_id 
+    Input:
+        html (str): HTML content of the ESPN fight page.
+    Output:
+        list: List of dictionaries containing fight details.
+    Purpose:
+        Parses the final HTML for the loaded ESPN fight page 
+        and returns a list of fight dictionaries.
+    Expected Output:
+        A list of dictionaries where each dictionary contains details of a fight.
+    Sample Output:
+        get_fight_info_from_fight_id(html) -> [
+            {"fighter1": {"John Doe": {
+                {'Pre-Fight Odds': '-260',
+                             'KD': '0',
+                             'TOT Strikes': '95/254',
+                             'SIG Strikes': '92/250',
+                             'Head': '56/196',
+                             'Body': '25/34',
+                             'Legs': '11/20',
+                             'Control': '0:50',
+                             'Take Downs': '0/6',
+                             'SUB ATT': '0'}
+                }
+                }}, 
+                "fighter2": 
+                {"Jane Smith": {
+                    {'Pre-Fight Odds': '-260',
+                             'KD': '0',
+                             'TOT Strikes': '95/254',
+                             'SIG Strikes': '92/250',
+                             'Head': '56/196',
+                             'Body': '25/34',
+                             'Legs': '11/20',
+                             'Control': '0:50',
+                             'Take Downs': '0/6',
+                             'SUB ATT': '0'}
+                    }
+                    }
+                }, "method": "KO/TKO", "round": "R3", "time": "2:30", "timestamp": 810},
+        ]
     """
     soup = BeautifulSoup(html, 'html.parser')
-    
-    # TODO: check if live fight still has class mb6. If not, change
     fight_segments = soup.find_all("div", class_="mb6")
     fights = []
-    
-    # go through each of the fight card segments and get the fight information
+
     for fight in fight_segments:
-        
-        # continually update dictionary to store fight information
-        # TODO: check if modify in-place or not
         fight_info = {}
         fight_info = get_fighter_names(fight, fight_info)
         fight_info = get_final_score(fight, fight_info)
@@ -73,173 +248,62 @@ def get_fight_info_from_fight_id(html):
     return fights
 
 
-def get_fighter_names(fight, fight_info):
-    """
-    Input: 
-        fight: BeautifulSoup Object(a fight segment from the ESPN fight page)
-        fight_info (a dictionary to store the fight information)
-    
-    Output: 
-        fight_info: dictionary with the fighter names
-    
-    Purpose:
-        This function gets the names of the fighters in the fight
-        and stores them in the fight_info dictionary
-    """
-    fighters = fight.find_all("span", class_="truncate tc db")
-    fight_info["fighter1"] = {fighters[0].text: {}}
-    fight_info["fighter2"] = {fighters[1].text: {}}
-    return fight_info
-
-
-
-
-def get_final_score(fight, fight_info):
-    """
-    Input: fight (a fight segment from the ESPN fight page)
-    fight_info (a dictionary to store the fight information)
-    
-    Output: None
-    
-    This function gets the final score of the fight and stores
-    it in the fight_info dictionary. It stores the round, time,
-    method. It also adds a timestamp to the fight. 
-    """
-    pattern = re.compile(
-        r"^Final(?P<method>(?:KO\/TKO|S Dec|U Dec|Sub|No Contest))"
-        r"R(?P<round>\d+),\s*(?P<time>\d+:\d+)$"
-    )
-    
-    def parse_fight_result(result_str):
-        """
-        Parse a fight result string of the form:
-        - FinalKO/TKOR1, 3:38
-        - FinalS DecR3, 5:00
-        - FinalU DecR3, 5:00
-        - FinalSubR1, 4:48
-        and return (method, round, time).
-        
-        If the string does not match, return (None, None, None).
-        """
-        match = pattern.match(result_str.strip())
-        if match:
-            method = match.group("method")  # e.g. "KO/TKO", "S Dec", "U Dec", "Sub"
-            round_num = "R" + match.group("round")  # e.g. "R1", "R3"
-            fight_time = match.group("time")        # e.g. "3:38", "5:00"
-            return method, round_num, fight_time
-        else:
-            return None, None, None
-    
-    fight_score = fight.find_all("div", class_="ScoreCell__Time Gamestrip__Time ScoreCell__Time--post clr-gray-01")
-    
-    method, round_num, fight_time = parse_fight_result(fight_score[0].find("div").text)
-    fight_info["method"] = method
-    fight_info["round"] = round_num 
-    fight_info["time"] = fight_time
-    fight_info["timestamp"] = (int(round_num[1]) - 1) * 5 * 60 + int(fight_time.split(":")[0]) * 60 + int(fight_time.split(":")[1])
-    return fight_info
-
-def get_round_victory_info(fight, fight_info):
-
-    """
-    Input: fight (a fight segment from the ESPN fight page)
-    fight_info (a dictionary to store the fight information)
-    
-    Output: None
-    
-    Purpose: This function gets the round victory information
-    for each fighter in the fight and stores it in the fight_info
-    dictionary. 
-    """
-    fight_victory = fight.find_all(attrs={"data-testid": "gameStripBarVictory"})
-    if fight_victory:
-        fight_info["fighter_victory"] = fight_victory[0].text
-    return fight_info
-
-
-def get_fight_statistics(fight, fight_info):
-    """
-    Input: 
-        fight (a fight segment from the ESPN fight page)
-        fight_info (a dictionary to store the fight information)
-    
-    Output: 
-        None
-    
-    Purpose: 
-        This function gets the statistics for each fighter
-        in the fight and stores it in the fight_info dictionary. 
-    """
-    fight_statistics = fight.find_all(attrs={"data-wrapping": "MMAMatchup"})
-    for fight_statistic in fight_statistics:
-        fight_list = fight_statistic.find_all("li")
-        for fight_in_list in fight_list:
-            lhs_rhs_values= fight_in_list.find_all("div", class_="MMAMatchup__Stat ns8 MMAMatchup__Stat__Text")
-            lhs_rhs_array = [lhs_rhs_value.text for lhs_rhs_value in lhs_rhs_values] 
-            fighter_1_value = lhs_rhs_array[0]
-            fighter_2_value = lhs_rhs_array[1]
-            key_for_information = fight_in_list.find_all("div", class_="ns9 fw-medium ttu nowrap clr-gray-04")[0].text
-            fight_info["fighter1"][key_for_information] = fighter_1_value
-            fight_info["fighter2"] [key_for_information] = fighter_2_value
-    return fight_info
-            
-
 def run_process(fight_id):
     """
-    Input:
-        fight_id: str (the id of the fight to get information about)
-        
+    Input: 
+        fight_id (str): The unique identifier for the fight.
     Output:
         None
-    
     Purpose:
-        This function gets the information about a fight given
-        the fight_id and prints it out.
+        Main entry point to open the ESPN fight page via Playwright, 
+        click all 'Load more' buttons, parse data, and print results.
     """
-    # service = Service(ChromeDriverManager().install())
-    # Set up Chrome options
-    chrome_options = Options()
-    chrome_options.add_argument("--disable-blink-features=AutomationControlled")  # Helps bypass detection
+    url = f"https://www.espn.com/mma/fightcenter/_/id/{fight_id}/league/ufc"
+    print(f"[INFO] Starting Playwright for fight_id={fight_id}")
+    print(f"[INFO] Target URL: {url}")
 
-    # Set up the driver
-    service = Service(ChromeDriverManager().install())
-    
-    time.sleep(2)
-    
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    with sync_playwright() as p:
+        # 1) Launch a headless browser
+        print("[DEBUG] Launching Chromium (headless)...")
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/119.0.0.0 Safari/537.36"
+            ),
+            extra_http_headers={
+                "Referer": "https://www.google.com/",
+                "Accept-Language": "en-US,en;q=0.9",
+            }
+        )
+        page = context.new_page()
 
-    # Start DevTools session
-    driver.execute_cdp_cmd("Network.enable", {})
+        # 2) Go to the ESPN fight page
+        print("[DEBUG] Navigating to page...")
+        page.goto(url, timeout=15000)  # 15s timeout
 
-    # Set custom headers
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-        "Referer": "https://www.google.com/",
-        "Accept-Language": "en-US,en;q=0.9",
-    }
+        time.sleep(3)  # let page load
+        # 3) Click the 'load more fights' button multiple times
+        load_all_fight_buttons(page, max_clicks=10)
 
-    driver.execute_cdp_cmd("Network.setExtraHTTPHeaders", {"headers": headers})
+        # 4) Extract HTML and parse
+        print("[DEBUG] Extracting final page content for parsing.")
+        html = page.content()
+        fights_data = get_fight_info_from_fight_id(html)
 
-# Load the page
-    
-    try:
-        url = f"https://www.espn.com/mma/fightcenter/_/id/{fight_id}/league/ufc"
-        driver.get(url)
-        load_all_fight_buttons(driver)
-        html = driver.page_source
-        fight_info = get_fight_info_from_fight_id(html)
-        print(fight_info)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    finally:
-        driver.close()
-        driver.quit()
+        # 5) Close the browser
+        browser.close()
+
+    print("[INFO] Fights Data Parsed Successfully. Here is the result:")
+    pprint(fights_data, sort_dicts=False)  # nicely format the output
+
 
 if __name__ == "__main__":
     fight_id = "600040033"
     run_process(fight_id)
 
 
+# TODO: be able to extract all the fight_id's from the site to run multiple times and dump data into a database
 
 
-    
