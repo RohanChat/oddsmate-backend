@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from pprint import pprint
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
+
+
 def get_fighter_names(fight, fight_info):
     """
     Input:
