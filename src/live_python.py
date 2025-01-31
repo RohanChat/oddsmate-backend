@@ -145,7 +145,7 @@ def get_fight_statistics(fight, fight_info):
         fight_list = fight_statistic.find_all("li")
         for fight_in_list in fight_list:
             lhs_rhs_values = fight_in_list.find_all("div", class_="MMAMatchup__Stat ns8 MMAMatchup__Stat__Text")
-            lhs_rhs_array = [lhs_rhs_values.text for lhs_rhs_values in lhs_rhs_values]
+            lhs_rhs_array = [lhs_rhs_value.text for lhs_rhs_value in lhs_rhs_values]
             if len(lhs_rhs_array) == 2:
                 fighter_1_value = lhs_rhs_array[0]
                 fighter_2_value = lhs_rhs_array[1]
@@ -200,7 +200,7 @@ def load_all_fight_buttons(page, max_clicks=100):
                 btn.click()
                 clicks_done += 1
                 new_clicks += 1
-                print(f"[DEBUG] Clicked 'Load More' button #{clicks_done}")
+                # print(f"[DEBUG] Clicked 'Load More' button #{clicks_done}")
                 time.sleep(1)
             except Exception as e:
                 print(f"[DEBUG] Error clicking button: {e}")
@@ -208,7 +208,7 @@ def load_all_fight_buttons(page, max_clicks=100):
 
         # If none were clicked, stop
         if new_clicks == 0:
-            print("[DEBUG] No additional buttons clicked. Stopping.")
+            # print("[DEBUG] No additional buttons clicked. Stopping.")
             break
 
         # Scroll to bottom to allow any new buttons to load below
@@ -227,7 +227,7 @@ def load_all_fight_buttons(page, max_clicks=100):
     print("[DEBUG] End: load_all_fight_buttons\n")
 
 
-def get_fight_info_from_fight_id(html):
+def get_fight_info_from_fight_id(html, fight_id):
     """
     Input:
         html (str): HTML content of the ESPN fight page.
@@ -284,19 +284,19 @@ def get_fight_info_from_fight_id(html):
     return fights
 
 
-def run_process(fight_id):
+def run_process(fight_url):
     """
     Input: 
-        fight_id (str): The unique identifier for the fight.
+        fight_url (str): URL of the ESPN fight page to scrape.
     Output:
         None
     Purpose:
         Main entry point to open the ESPN fight page via Playwright, 
         click all 'Load more' buttons, parse data, and print results.
     """
-    url = f"https://www.espn.com/mma/fightcenter/_/id/{fight_id}/league/ufc"
-    print(f"[INFO] Starting Playwright for fight_id={fight_id}")
-    print(f"[INFO] Target URL: {url}")
+    curr_fight_id = re.search(r'/id/(\d+)/league/ufc', fight_url).group(1)
+    print(f"[INFO] Starting Playwright for fight_id={curr_fight_id}")
+    print(f"[INFO] Target URL: {fight_url}")
 
     with sync_playwright() as p:
         # 1) Launch a headless browser
@@ -316,30 +316,109 @@ def run_process(fight_id):
         page = context.new_page()
 
         # 2) Go to the ESPN fight page
-        print("[DEBUG] Navigating to page...")
-        page.goto(url, timeout=15000)  # 15s timeout
+        # print("[DEBUG] Navigating to page...")
+        page.goto(fight_url, timeout=15000)  # 15s timeout
 
         time.sleep(3)  # let page load
         # 3) Click the 'load more fights' button multiple times
-        load_all_fight_buttons(page, max_clicks=100)
+        load_all_fight_buttons(page, max_clicks=10)
 
         # 4) Extract HTML and parse
-        print("[DEBUG] Extracting final page content for parsing.")
+        # print("[DEBUG] Extracting final page content for parsing.")
         html = page.content()
-        fights_data = get_fight_info_from_fight_id(html)
+        fights_data = get_fight_info_from_fight_id(html, curr_fight_id)
 
         # 5) Close the browser
         browser.close()
 
     print("[INFO] Fights Data Parsed Successfully. Here is the result:")
     pprint(fights_data, sort_dicts=False)  # nicely format the output
+    return fights_data
+
+
+
+
+def get_fight_urls():
+    """
+    Scrapes all available fight URLs from ESPN's UFC fight center for the years 1993-2025.
+    
+    Output:
+        list: A list containing all fight URLs found on the ESPN pages.
+    
+    Purpose:
+        Iterates through each year's fight page, extracts all fight URLs from the select dropdown,
+        and returns a compiled list of fight URLs.
+    
+    Expected Output:
+        A list containing full fight URLs as strings. If no fights are found, the list will be empty.
+    
+    Sample Output:
+        get_fight_urls() -> ["https://www.espn.com/mma/fightcenter/_/id/400255714/league/ufc",
+                              "https://www.espn.com/mma/fightcenter/_/id/400255712/league/ufc"]
+    """
+    fight_urls = []
+    base_url = "https://www.espn.com/mma/fightcenter/_/league/ufc/year/{}"
+    espn_base = "https://www.espn.com"
+    print("[INFO] Starting to fetch list of urls from ESPN Fight Center for years 1993-2025")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/119.0.0.0 Safari/537.36"
+            ),
+            extra_http_headers={
+                "Referer": "https://www.google.com/",
+                "Accept-Language": "en-US,en;q=0.9",
+            }
+        )
+        page = context.new_page()
+        
+        for year in range(1993, 2026):
+            print(f"[INFO] Fetching fight URLs for year: {year}")
+            page.goto(base_url.format(year), timeout=15000)
+            try:
+                dropdown_selector = "select.dropdown__select"
+                page.wait_for_selector(dropdown_selector, timeout=5000)
+                page.click(dropdown_selector)  # Click the dropdown to ensure options load
+                time.sleep(2)  # Allow some time for options to become visible
+                html = page.content()
+                soup = BeautifulSoup(html, "html.parser")
+                
+                select_element = soup.find_all("select", class_="dropdown__select", attrs={"style": "text-overflow:ellipsis;overflow:hidden;width:100%"})
+                # print(select_element)
+                if select_element:
+                    for select in select_element:
+
+                        options = select.find_all("option")
+                        year_fight_urls = [espn_base + opt["data-url"] for opt in options if opt["data-url"] != "#"]
+                    
+                        # if year_fight_urls:
+                        #     print(f"[INFO] Found {len(year_fight_urls)} fights for {year}: {year_fight_urls}")
+                        # else:
+                        #     print(f"[INFO] No valid fight URLs found for {year}")
+                    
+                        fight_urls.extend(year_fight_urls)
+                else:
+                    print(f"[WARNING] No select element found for year {year}")
+            except PlaywrightTimeout:
+                print(f"[WARNING] No dropdown found for year {year}, skipping...")
+                continue
+            except Exception as e:
+                print(f"[ERROR] An error occurred: {e}")
+                continue
+    
+    print(f"[INFO] Total fight URLs collected: {len(fight_urls)}")
+    return fight_urls
 
 
 if __name__ == "__main__":
-    fight_id = "600040033"
-    run_process(fight_id)
-
-
-# TODO: be able to extract all the fight_id's from the site to run multiple times and dump data into a database
-
-
+    fight_urls = get_fight_urls()
+    fight_data = {}
+    for fight_url in fight_urls:    
+        fight_id = re.search(r'/id/(\d+)/league/ufc', fight_url).group(1)
+        fight_stats = run_process(fight_url)
+        fight_data[fight_id] = fight_stats
+        
+    print("[INFO] All fight URLs processed successfully.")
