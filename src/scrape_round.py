@@ -224,16 +224,14 @@ def scrape_round_by_round_stats(fight_url, fighter_url):
 
     return final_data
 
-def main():
+def main(fight_url="http://ufcstats.com/fight-details/f39941b3743bf18c", fighter_url="http://ufcstats.com/fighter-details/c03520b5c88ed6b4"):
     # Replace with the actual fight URL and fighter URL
-    fight_url = "http://ufcstats.com/fight-details/f39941b3743bf18c"
-    fighter_url = "http://ufcstats.com/fighter-details/c03520b5c88ed6b4"  # Replace with the actual fighter URL
-    
+
     data = scrape_round_by_round_stats(fight_url, fighter_url)
     if data:
-        print(json.dumps(data, indent=2))
+        return json.dumps(data, indent=2)
     else:
-        print("No round-by-round data extracted.")
+        return "No round-by-round data extracted."
 
 if __name__ == "__main__":
-    main()
+    print(main())

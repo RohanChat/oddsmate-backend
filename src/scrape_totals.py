@@ -181,9 +181,9 @@ def extract_all_tables(soup):
 
 # --- Main scraper function that builds the new JSON structure ---
 
-def main():
+def main(fight_url = "http://ufcstats.com/fight-details/c8a04210d832a928"):
     # Replace with the actual fight URL you want to scrape.
-    fight_url = "http://ufcstats.com/fight-details/c8a04210d832a928"
+    
     
     # Fetch the fight page.
     response = requests.get(fight_url)
@@ -207,7 +207,7 @@ def main():
     
     # 3. Build the top-level JSON object.
     final_output = {
-        "id": fight_id,
+        "fight_id": fight_id,
         "method": fight_details.get("method", ""),
         "round": fight_details.get("round", ""),
         "time": fight_details.get("time", ""),
@@ -320,7 +320,7 @@ def main():
         final_output[key] = fighter_data
     
     # 5. Output the final JSON.
-    print(json.dumps(final_output, indent=2))
+    return json.dumps(final_output, indent=2)
 
 if __name__ == "__main__":
-    main()
+    print(main())

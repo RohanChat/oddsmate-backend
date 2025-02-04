@@ -129,8 +129,8 @@ def scrape_fighter_stats(fighter_url):
         "Sub. Avg.": "Sub. Avg."
     }
 
-    # Initialize your pre_fight_stats dictionary
-    pre_fight_stats = {
+    # Initialize your stats dictionary
+    stats = {
         # We'll add stats as we parse them
     }
 
@@ -149,9 +149,9 @@ def scrape_fighter_stats(fighter_url):
                 # Convert to float if possible
                 try:
                     numeric_val = float(numeric_val)
-                    pre_fight_stats[final_key] = numeric_val
+                    stats[final_key] = numeric_val
                 except ValueError:
-                    pre_fight_stats[final_key] = numeric_val
+                    stats[final_key] = numeric_val
     
     # Build the final top-level dictionary
 
@@ -177,8 +177,8 @@ def scrape_fighter_stats(fighter_url):
     # Stance (lowercase)
     stance_str = raw_stats.get("STANCE", "").lower()
     
-    # Insert record into pre_fight_stats
-    pre_fight_stats["record"] = {
+    # Insert record into stats
+    stats["record"] = {
         "wins": wins,
         "losses": losses,
         "draws": draws
@@ -194,7 +194,7 @@ def scrape_fighter_stats(fighter_url):
         "weight": weight_int if weight_int else None,
         "reach": reach_int if reach_int else None,
         "stance": stance_str,
-        "pre_fight_stats": pre_fight_stats,
+        "stats": stats,
         "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # Add timestamp here
 
     }
