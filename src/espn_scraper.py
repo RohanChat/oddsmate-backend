@@ -399,7 +399,12 @@ class ESPNHistoricalScrapper():
 
     def kill_browser(self):
         """
-        Kills the browser instance.
+        Input:
+            None 
+        Output:
+            None
+        Purpose:
+            Kills the browser instance.
         """
         self.browser.close()
         self.playwright.stop()
@@ -411,6 +416,18 @@ class ESPNHistoricalScrapper():
 
 class LiveESPNScraper():
     def __init__(self, headless=True, timeout=15000):
+        """
+        Input:
+            headless: bool - Whether to run the browser through Playwright in headless mode.
+            timeout: int - The maximum time to wait for a page to load before timing out.
+        
+        Output:
+            None
+        
+        Purpose:
+            Initializes the LiveESPNScraper class with default
+            values.
+        """
         self.base_url = "https://www.espn.com/mma/fightcenter/_/league/ufc/year/{}"
         self.fight_data = {}
         self.headless = headless
@@ -433,6 +450,25 @@ class LiveESPNScraper():
     async def monitor_fight(self):
         """
         This is an async function that will monitor a live fight on ESPN's fight center.
+        
+        Input:
+            None
+        
+        Output:
+            None
+        
+        Purpose:
+            This function will open a browser instance, navigate to the ESPN fight center, and
+            continuously monitor the fight details. It will print the fight details to the console
+            every 2 seconds until the user stops the monitoring.
+        
+        Expected Output:
+            None
+        
+        Sample Output:
+            None 
+        
+        This function must be called with asyncio.run(live_scraper.monitor_fight())
         """
         async with async_playwright() as self.playwright:
             self.browser = await self.playwright.chromium.launch(headless=True)
@@ -457,14 +493,15 @@ class LiveESPNScraper():
         Input:
             html (str): HTML content of the ESPN fight page.
         Output:
-            list: List of dictionaries containing fight details.
+            fight_data (dict): Dictionary containing fight details.
         Purpose:   
-            Parses the final HTML for the loaded ESPN fight page 
-            and returns a list of fight dictionaries.
+            Parses the HTML for the loaded ESPN fight page 
+            and returns a list of fight dictionaries. This will be 
+            updating live.
         Expected Output:
-            A list of dictionaries where each dictionary contains details of a fight.
+            A fight dictionary containing details of the live fight.
         Sample Output:
-            get_fight_info_from_fight_id(html) -> [
+            get_fight_info_from_fight_id(html) -> 
                 {"fighter1": {"John Doe": {
                     {'Pre-Fight Odds': '-260',
                                  'KD': '0',
@@ -493,7 +530,9 @@ class LiveESPNScraper():
                         }
                         }
                     }, "method": "KO/TKO", "round": "R3", "time": "2:30", "timestamp": 810},
-            ]
+            
+            
+        This will be updated to return a dictionary with the fight details.
         """
         soup = BeautifulSoup(html, 'html.parser')
         fight_segments = soup.find_all("div", class_="mb6")
@@ -558,6 +597,23 @@ class LiveESPNScraper():
         return fight_info
     
     def get_curr_score(self, fight, fight_info):
+        """ 
+        Input:
+            fight (BeautifulSoup object): HTML segment containing fight results.
+            fight_info (dict): Dictionary to store fight details.
+        Output:
+            dict: Updated fight_info dictionary with method of victory, round, time, and timestamp.
+        Purpose:
+            Parses the live fight result details including method (e.g., KO/TKO, Decision),
+            round, and fight duration. Additionally, it calculates the fight timestamp in seconds. This
+            will update live 
+        Expected Output:
+            A dictionary where "method", "round", "time", and "timestamp" are extracted from the fight result.
+            If the fight result is not found, values default to None.
+        Sample Output:
+            get_curr_score(fight, {}) -> {"method": "KO/TKO", "round": "R3", "time": "2:30", "timestamp": 810}
+            get_curr_score(fight, {}) -> {"method": None, "round": None, "time": None, "timestamp":
+        """
         pattern = re.compile(
             r"^Final(?P<method>(?:KO\/TKO|S Dec|U Dec|Sub|No Contest))"
             r"R(?P<round>\d+),\s*(?P<time>\d+:\d+)$"
