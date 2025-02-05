@@ -4,20 +4,13 @@ ODDS/MATE MVP Development
 ## Source Files
 
 ### Data Collection
-- `src/scrape_bio.py`: Extracts fighter biographical data
-  - Scrapes height, reach, stance, record
-  - Formats data into standardized JSON
-  - Uses Playwright for reliable data extraction
+- [src/pull_upcoming.py](src/pull_upcoming.py) - Fetches upcoming UFC events and fight cards
+- [src/scrape_event.py](src/scrape_event.py) - Scrapes complete event data including all fights
+- [src/scrape_totals.py](src/scrape_totals.py) - Collects fight statistics and totals
+- [src/scrape_round.py](src/scrape_round.py) - Gathers round-by-round fight statistics
+- [src/scrape_bio.py](src/scrape_bio.py) - Extracts fighter biographical information
+- [src/parse_events.py](src/parse_events.py) - Processes and parses event data into structured format
 
-- `src/live_python.py`: Real-time fight statistics scraping
-  - Monitors live UFC events
-  - Collects round-by-round statistics
-  - Outputs JSON formatted fight data
-
-- `src/scrape_totals.py`: Fight totals collection
-  - Gathers significant strikes, takedowns, control time
-  - Processes both fighters' statistics
-  - Handles different fight outcome scenarios
 
 ## Setup
 
