@@ -1,0 +1,4183 @@
+{
+  "event_id": "b60391da771deefe",
+  "date": "1994-12-16",
+  "location": {
+    "name": "Tulsa, Oklahoma, USA",
+    "coordinates": {
+      "lat": 36.1539816,
+      "lng": -95.99277500000001
+    },
+    "elevation": 219.3077087402344
+  },
+  "fights": [
+    {
+      "fight_id": "f29eec19aa5c1303",
+      "method": "Submission",
+      "round": "1",
+      "time": "15:49",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "429e7d3725852ce9",
+        "name": "Royce Gracie",
+        "nickname": "",
+        "dob": "12/12/1966",
+        "height": 73,
+        "weight": 175,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.88,
+          "Str. Acc.:": 41.0,
+          "SApM": 1.13,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 66.0,
+          "Sub. Avg.": 0.8,
+          "record": {
+            "wins": 15,
+            "losses": 2,
+            "draws": 3
+          }
+        },
+        "timestamp": "2025-02-10 19:55:17",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 4,
+          "Head": {
+            "landed": 0,
+            "attempted": 1
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 3
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 4
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 0.0,
+        "Total str.": {
+          "landed": 80,
+          "attempted": 84
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "3",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 0,
+              "attempted": 4,
+              "Head": {
+                "landed": 0,
+                "attempted": 1
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 3
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 4
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 0.0,
+            "Total str.": {
+              "landed": 80,
+              "attempted": 84
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 3,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 1.2857142857142858,
+              "differential": 1.4285714285714286,
+              "per_min": 0.4232766513742449
+            },
+            "reversals": {
+              "avg": 0.2857142857142857,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 0.5714285714285714,
+                "differential": 0.7142857142857143,
+                "per_min": 0.2707679095701553
+              },
+              "attempts": {
+                "avg": 1.4285714285714286,
+                "differential": 1.4285714285714286,
+                "per_min": 0.5891362881794978
+              },
+              "accuracy": {
+                "avg": 42.85714285714285,
+                "differential": 43.0
+              },
+              "def": {
+                "avg": 71.42857142857143,
+                "differential": 29.285714285714285
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 3.7142857142857135,
+                "differential": 2.392857142857143,
+                "per_min": 1.1081539825235756
+              },
+              "attempts": {
+                "avg": 6.857142857142858,
+                "differential": 1.7867608581894296,
+                "per_min": 1.745791536815896
+              },
+              "accuracy": {
+                "avg": 42.11368341803124,
+                "differential": 10.122482589873892
+              },
+              "def": {
+                "avg": 72.8152799581371,
+                "differential": 8.245682888540031
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 30.0,
+                "differential": 7.561224489795919,
+                "per_min": 6.978517581599902
+              },
+              "attempts": {
+                "avg": 33.57142857142857,
+                "differential": 4.859523809523808,
+                "per_min": 7.697631318917461
+              },
+              "accuracy": {
+                "avg": 63.16094144466522,
+                "differential": 13.572275609305056
+              },
+              "def": {
+                "avg": 64.94047619047619,
+                "differential": 7.831135531135532
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 2.2857142857142856,
+                "differential": 1.8095238095238089,
+                "per_min": 0.7324359944334541
+              },
+              "attempts": {
+                "avg": 3.8571428571428568,
+                "differential": 1.488095238095238,
+                "per_min": 1.0512658992053798
+              },
+              "accuracy": {
+                "avg": 44.16666666666667,
+                "differential": 24.05238095238096
+              },
+              "def": {
+                "avg": 82.14285714285714,
+                "differential": 22.36755952380952
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.7142857142857143,
+                "differential": 1.1428571428571428,
+                "per_min": 0.152312305992529
+              },
+              "attempts": {
+                "avg": 1.4285714285714286,
+                "differential": 1.7142857142857142,
+                "per_min": 0.3026017267537309
+              },
+              "accuracy": {
+                "avg": 18.09523809523809,
+                "differential": 10.038095238095236
+              },
+              "def": {
+                "avg": 64.28571428571429,
+                "differential": 0.9285714285714284
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 0.7142857142857143,
+                "differential": 1.1428571428571428,
+                "per_min": 0.2234056820975925
+              },
+              "attempts": {
+                "avg": 1.5714285714285714,
+                "differential": 2.0,
+                "per_min": 0.3919239108567852
+              },
+              "accuracy": {
+                "avg": 30.95238095238096,
+                "differential": 26.666666666666664
+              },
+              "def": {
+                "avg": 85.71428571428571,
+                "differential": 15.214285714285715
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 0.5714285714285714,
+                "differential": 1.2857142857142858,
+                "per_min": 0.1072937389632742
+              },
+              "attempts": {
+                "avg": 2.142857142857143,
+                "differential": 1.1904761904761905,
+                "per_min": 0.4069226326439835
+              },
+              "accuracy": {
+                "avg": 10.0,
+                "differential": 7.942857142857143
+              },
+              "def": {
+                "avg": 95.23809523809524,
+                "differential": 1.119047619047619
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 1.7142857142857142,
+                "differential": 1.4523809523809526,
+                "per_min": 0.4048997474126561
+              },
+              "attempts": {
+                "avg": 2.8571428571428568,
+                "differential": 1.4642857142857142,
+                "per_min": 0.6306189507566443
+              },
+              "accuracy": {
+                "avg": 28.93772893772893,
+                "differential": 0.9597069597069596
+              },
+              "def": {
+                "avg": 64.28571428571429,
+                "differential": 0.9464285714285714
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 1.4285714285714286,
+                "differential": 1.7142857142857142,
+                "per_min": 0.5959604961476452
+              },
+              "attempts": {
+                "avg": 1.8571428571428568,
+                "differential": 1.4285714285714286,
+                "per_min": 0.7082499534152683
+              },
+              "accuracy": {
+                "avg": 24.285714285714285,
+                "differential": 24.57142857142857
+              },
+              "def": {
+                "avg": 80.47619047619048,
+                "differential": 15.280952380952382
+              }
+            },
+            "physicals": {
+              "height_differential": 1.0174143661407542,
+              "age_differential": 0.9301723049813404
+            }
+          },
+          "recent": {
+            "knockdowns": 0.0,
+            "sub_attempts": 1.6666666666666667,
+            "reversals": 0.3333333333333333,
+            "control": 0.0,
+            "takedowns": {
+              "landed": 0.6666666666666666,
+              "attempts": 1.6666666666666667,
+              "accuracy": 33.666666666666664,
+              "def": 33.666666666666664
+            },
+            "significant_strikes": {
+              "landed": 3.3611111111111107,
+              "attempts": 2.645299145299145,
+              "accuracy": 21.896903820816863,
+              "def": 1.5256410256410255
+            },
+            "total_strikes": {
+              "landed": 12.087301587301589,
+              "attempts": 7.0749999999999975,
+              "accuracy": 30.07312651917769,
+              "def": 4.119871794871794
+            },
+            "head_strikes": {
+              "landed": 2.555555555555556,
+              "attempts": 1.805555555555556,
+              "accuracy": 22.12222222222222,
+              "def": 18.02430555555556
+            },
+            "body_strikes": {
+              "landed": 1.6666666666666667,
+              "attempts": 3.0,
+              "accuracy": 22.42222222222221,
+              "def": 0.9999999999999996
+            },
+            "leg_strikes": {
+              "landed": 1.0,
+              "attempts": 2.333333333333333,
+              "accuracy": 11.555555555555555,
+              "def": 0.8333333333333334
+            },
+            "distance_strikes": {
+              "landed": 1.3333333333333333,
+              "attempts": 1.4444444444444446,
+              "accuracy": 0.8666666666666667,
+              "def": 0.9444444444444444
+            },
+            "clinch_strikes": {
+              "landed": 2.055555555555556,
+              "attempts": 2.083333333333333,
+              "accuracy": 0.905982905982906,
+              "def": 0.875
+            },
+            "ground_strikes": {
+              "landed": 2.333333333333333,
+              "attempts": 1.6666666666666667,
+              "accuracy": 23.33333333333333,
+              "def": 1.5222222222222217
+            },
+            "physicals": {
+              "height_differential": 1.0147864967583278,
+              "knockdowns_differential": 1.0,
+              "sub_attempts_differential": 1.6666666666666667,
+              "reversals_differential": 1.0,
+              "control_differential": 1.0
+            },
+            "per_min": {
+              "takedowns": {
+                "landed": 0.0873362445414847,
+                "attempts": 0.350675315109471
+              },
+              "significant_strikes": {
+                "landed": 1.4168614570571745,
+                "attempts": 2.7748122872024594
+              },
+              "total_strikes": {
+                "landed": 6.283207690399778,
+                "attempts": 7.701399484400484
+              },
+              "head_strikes": {
+                "landed": 0.9297965411239468,
+                "attempts": 1.6737329855917746
+              },
+              "body_strikes": {
+                "landed": 0.3553953806492345,
+                "attempts": 0.7060706957587054
+              },
+              "leg_strikes": {
+                "landed": 0.1316695352839931,
+                "attempts": 0.3950086058519793
+              },
+              "distance_strikes": {
+                "landed": 0.1204819277108433,
+                "attempts": 0.6897458830957016
+              },
+              "clinch_strikes": {
+                "landed": 0.6850258175559379,
+                "attempts": 1.2117039586919105
+              },
+              "ground_strikes": {
+                "landed": 0.6113537117903929,
+                "attempts": 0.8733624454148471
+              }
+            }
+          }
+        }
+      },
+      "fighter2": {
+        "id": "c670aa48827d6be6",
+        "name": "Dan Severn",
+        "nickname": "The Beast",
+        "dob": "08/06/1958",
+        "height": 74,
+        "weight": 250,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 101,
+            "losses": 19,
+            "draws": 1
+          }
+        },
+        "timestamp": "2025-02-10 19:55:17",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 4,
+          "attempted": 7,
+          "Head": {
+            "landed": 4,
+            "attempted": 7
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 4,
+            "attempted": 7
+          }
+        },
+        "Sig. str. %": 57.0,
+        "Total str.": {
+          "landed": 27,
+          "attempted": 43
+        },
+        "Td": {
+          "landed": 1,
+          "attempted": 1
+        },
+        "Td %": 100.0,
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 4,
+              "attempted": 7,
+              "Head": {
+                "landed": 4,
+                "attempted": 7
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 4,
+                "attempted": 7
+              }
+            },
+            "Sig. str. %": 57.0,
+            "Total str.": {
+              "landed": 27,
+              "attempted": 43
+            },
+            "Td": {
+              "landed": 1,
+              "attempted": 1
+            },
+            "Td %": 100.0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 1.0,
+              "differential": 1.0,
+              "per_min": 0.8626373626373626
+            },
+            "reversals": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 1.5,
+                "differential": 1.5,
+                "per_min": 1.1483516483516485
+              },
+              "attempts": {
+                "avg": 3.0,
+                "differential": 3.0,
+                "per_min": 2.005494505494505
+              },
+              "accuracy": {
+                "avg": 70.0,
+                "differential": 70.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 50.83333333333334
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 30.55555555555556,
+                "differential": 0.3055555555555556
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 23.809523809523817,
+                "differential": 0.2380952380952381
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.5
+              },
+              "def": {
+                "avg": 50.0,
+                "differential": 0.5
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 25.0,
+                "differential": 0.25
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.5
+              },
+              "def": {
+                "avg": 66.66666666666667,
+                "differential": 0.6666666666666667
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 41.66666666666667,
+                "differential": 0.4166666666666667
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.5
+              },
+              "def": {
+                "avg": 50.0,
+                "differential": 0.5
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.5
+              },
+              "def": {
+                "avg": 50.0,
+                "differential": 0.5
+              }
+            },
+            "physicals": {
+              "height_differential": 1.043081199126464
+            }
+          }
+        }
+      }
+    },
+    {
+      "fight_id": "e65a23b80c869456",
+      "method": "Submission",
+      "round": "1",
+      "time": "0:52",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "c670aa48827d6be6",
+        "name": "Dan Severn",
+        "nickname": "The Beast",
+        "dob": "08/06/1958",
+        "height": 74,
+        "weight": 250,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 101,
+            "losses": 19,
+            "draws": 1
+          }
+        },
+        "timestamp": "2025-02-10 19:55:18",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": "---",
+        "Total str.": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td": {
+          "landed": 1,
+          "attempted": 1
+        },
+        "Td %": 100.0,
+        "Sub. att": "1",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 0,
+              "attempted": 0,
+              "Head": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 0,
+            "Total str.": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td": {
+              "landed": 1,
+              "attempted": 1
+            },
+            "Td %": 100.0,
+            "Sub. att": 1,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 1.0,
+              "differential": 1.0,
+              "per_min": 0.5714285714285714
+            },
+            "reversals": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 2.0,
+                "differential": 2.0,
+                "per_min": 1.1428571428571428
+              },
+              "attempts": {
+                "avg": 5.0,
+                "differential": 5.0,
+                "per_min": 2.8571428571428568
+              },
+              "accuracy": {
+                "avg": 40.0,
+                "differential": 40.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.6666666666666667
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 11.111111111111114,
+                "differential": 0.1111111111111111
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 14.285714285714292,
+                "differential": 0.1428571428571429
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 0.0,
+                "differential": 0.0
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 0.0,
+                "differential": 0.0
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 33.33333333333334,
+                "differential": 0.3333333333333334
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 33.33333333333334,
+                "differential": 0.3333333333333334
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 0.0,
+                "differential": 0.0
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 0.0,
+                "differential": 0.0
+              }
+            },
+            "physicals": {
+              "height_differential": 1.072463768115942
+            }
+          }
+        }
+      },
+      "fighter2": {
+        "id": "e8fb8e53bc2e29d6",
+        "name": "Marcus Bossett",
+        "nickname": "The Grasshopper",
+        "dob": "--",
+        "height": 73,
+        "weight": 215,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 1,
+            "losses": 3,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:18",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 1,
+          "attempted": 2,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 1,
+            "attempted": 2
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 1,
+            "attempted": 2
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 50.0,
+        "Total str.": {
+          "landed": 2,
+          "attempted": 3
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 1,
+              "attempted": 2,
+              "Head": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Body": {
+                "landed": 1,
+                "attempted": 2
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 1,
+                "attempted": 2
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 50.0,
+            "Total str.": {
+              "landed": 2,
+              "attempted": 3
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      }
+    },
+    {
+      "fight_id": "9c74c2758a2c7c2e",
+      "method": "Submission",
+      "round": "1",
+      "time": "5:32",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "429e7d3725852ce9",
+        "name": "Royce Gracie",
+        "nickname": "",
+        "dob": "12/12/1966",
+        "height": 73,
+        "weight": 175,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.88,
+          "Str. Acc.:": 41.0,
+          "SApM": 1.13,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 66.0,
+          "Sub. Avg.": 0.8,
+          "record": {
+            "wins": 15,
+            "losses": 2,
+            "draws": 3
+          }
+        },
+        "timestamp": "2025-02-10 19:55:19",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 11,
+          "attempted": 23,
+          "Head": {
+            "landed": 7,
+            "attempted": 15
+          },
+          "Body": {
+            "landed": 3,
+            "attempted": 5
+          },
+          "Leg": {
+            "landed": 1,
+            "attempted": 3
+          },
+          "Distance": {
+            "landed": 2,
+            "attempted": 10
+          },
+          "Clinch": {
+            "landed": 9,
+            "attempted": 13
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 47.0,
+        "Total str.": {
+          "landed": 45,
+          "attempted": 58
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 2
+        },
+        "Td %": 0.0,
+        "Sub. att": "3",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 11,
+              "attempted": 23,
+              "Head": {
+                "landed": 7,
+                "attempted": 15
+              },
+              "Body": {
+                "landed": 3,
+                "attempted": 5
+              },
+              "Leg": {
+                "landed": 1,
+                "attempted": 3
+              },
+              "Distance": {
+                "landed": 2,
+                "attempted": 10
+              },
+              "Clinch": {
+                "landed": 9,
+                "attempted": 13
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 47.0,
+            "Total str.": {
+              "landed": 45,
+              "attempted": 58
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 2
+            },
+            "Td %": 0.0,
+            "Sub. att": 3,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 1.0,
+              "differential": 1.1666666666666667,
+              "per_min": 0.4034613141534865
+            },
+            "reversals": {
+              "avg": 0.3333333333333333,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 0.6666666666666666,
+                "differential": 0.6666666666666666,
+                "per_min": 0.3158958944985146
+              },
+              "attempts": {
+                "avg": 1.3333333333333333,
+                "differential": 1.3333333333333333,
+                "per_min": 0.6270847056873258
+              },
+              "accuracy": {
+                "avg": 50.0,
+                "differential": 50.0
+              },
+              "def": {
+                "avg": 66.66666666666667,
+                "differential": 34.0
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 2.5,
+                "differential": 2.333333333333333,
+                "per_min": 0.9615210117393524
+              },
+              "attempts": {
+                "avg": 4.166666666666667,
+                "differential": 1.7896825396825395,
+                "per_min": 1.3439857086145297
+              },
+              "accuracy": {
+                "avg": 41.16161616161616,
+                "differential": 11.550505050505052
+              },
+              "def": {
+                "avg": 73.41269841269842,
+                "differential": 9.398809523809524
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 27.5,
+                "differential": 7.75,
+                "per_min": 6.786182158452902
+              },
+              "attempts": {
+                "avg": 29.5,
+                "differential": 5.065277777777777,
+                "per_min": 7.233581920263142
+              },
+              "accuracy": {
+                "avg": 60.75673053601746,
+                "differential": 15.538755041726176
+              },
+              "def": {
+                "avg": 66.3888888888889,
+                "differential": 8.718055555555559
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 1.5,
+                "differential": 1.722222222222222,
+                "per_min": 0.6436652866783871
+              },
+              "attempts": {
+                "avg": 2.0,
+                "differential": 1.5277777777777777,
+                "per_min": 0.7746696534906142
+              },
+              "accuracy": {
+                "avg": 43.75,
+                "differential": 27.75
+              },
+              "def": {
+                "avg": 83.33333333333333,
+                "differential": 25.86111111111111
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.3333333333333333,
+                "differential": 0.8333333333333334,
+                "per_min": 0.0873362445414847
+              },
+              "attempts": {
+                "avg": 0.8333333333333334,
+                "differential": 1.1666666666666667,
+                "per_min": 0.2024329382407984
+              },
+              "accuracy": {
+                "avg": 11.111111111111107,
+                "differential": 11.611111111111107
+              },
+              "def": {
+                "avg": 75.0,
+                "differential": 1.0833333333333333
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 0.6666666666666666,
+                "differential": 1.1666666666666667,
+                "per_min": 0.2305194805194805
+              },
+              "attempts": {
+                "avg": 1.3333333333333333,
+                "differential": 1.8333333333333333,
+                "per_min": 0.3668831168831169
+              },
+              "accuracy": {
+                "avg": 30.55555555555556,
+                "differential": 25.55555555555556
+              },
+              "def": {
+                "avg": 83.33333333333333,
+                "differential": 17.5
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 0.3333333333333333,
+                "differential": 1.1666666666666667,
+                "per_min": 0.0649350649350649
+              },
+              "attempts": {
+                "avg": 0.8333333333333334,
+                "differential": 0.8333333333333334,
+                "per_min": 0.1735382521408722
+              },
+              "accuracy": {
+                "avg": 8.333333333333334,
+                "differential": 9.166666666666666
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.1666666666666667
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 0.5,
+                "differential": 0.9444444444444444,
+                "per_min": 0.2012987012987012
+              },
+              "attempts": {
+                "avg": 1.1666666666666667,
+                "differential": 1.1666666666666667,
+                "per_min": 0.3441558441558441
+              },
+              "accuracy": {
+                "avg": 22.222222222222207,
+                "differential": 0.8888888888888888
+              },
+              "def": {
+                "avg": 66.66666666666667,
+                "differential": 0.8333333333333334
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 1.6666666666666667,
+                "differential": 2.0,
+                "per_min": 0.6952872455055861
+              },
+              "attempts": {
+                "avg": 2.1666666666666665,
+                "differential": 1.6666666666666667,
+                "per_min": 0.8262916123178131
+              },
+              "accuracy": {
+                "avg": 28.33333333333333,
+                "differential": 28.66666666666667
+              },
+              "def": {
+                "avg": 80.0,
+                "differential": 17.68888888888889
+              }
+            },
+            "physicals": {
+              "height_differential": 1.0156219248167957,
+              "age_differential": 0.9301723049813404
+            }
+          },
+          "recent": {
+            "knockdowns": 0.0,
+            "sub_attempts": 0.6666666666666666,
+            "reversals": 0.3333333333333333,
+            "control": 0.0,
+            "takedowns": {
+              "landed": 0.6666666666666666,
+              "attempts": 1.6666666666666667,
+              "accuracy": 50.0,
+              "def": 34.0
+            },
+            "significant_strikes": {
+              "landed": 3.777777777777777,
+              "attempts": 2.722222222222221,
+              "accuracy": 22.045454545454547,
+              "def": 17.75
+            },
+            "total_strikes": {
+              "landed": 11.77777777777778,
+              "attempts": 7.088888888888889,
+              "accuracy": 29.98199351425158,
+              "def": 14.394444444444444
+            },
+            "head_strikes": {
+              "landed": 2.777777777777777,
+              "attempts": 2.3888888888888893,
+              "accuracy": 54.83333333333334,
+              "def": 50.88888888888889
+            },
+            "body_strikes": {
+              "landed": 0.6666666666666666,
+              "attempts": 1.3333333333333333,
+              "accuracy": 22.222222222222207,
+              "def": 1.1666666666666663
+            },
+            "leg_strikes": {
+              "landed": 1.0,
+              "attempts": 1.6666666666666667,
+              "accuracy": 33.77777777777778,
+              "def": 33.666666666666664
+            },
+            "distance_strikes": {
+              "landed": 1.0,
+              "attempts": 0.3333333333333333,
+              "accuracy": 1.0,
+              "def": 1.0
+            },
+            "clinch_strikes": {
+              "landed": 0.8888888888888888,
+              "attempts": 1.3333333333333333,
+              "accuracy": 0.7777777777777777,
+              "def": 0.6666666666666666
+            },
+            "ground_strikes": {
+              "landed": 3.333333333333333,
+              "attempts": 2.6666666666666665,
+              "accuracy": 56.66666666666666,
+              "def": 34.57777777777777
+            },
+            "physicals": {
+              "height_differential": 1.0008923208923208,
+              "age_differential": 0.8876656374110179,
+              "knockdowns_differential": 1.0,
+              "sub_attempts_differential": 1.0,
+              "reversals_differential": 1.0,
+              "control_differential": 1.0
+            },
+            "per_min": {
+              "takedowns": {
+                "landed": 0.3470765042817445,
+                "attempts": 0.749673906879147
+              },
+              "significant_strikes": {
+                "landed": 1.7931718936085748,
+                "attempts": 2.4282311574887987
+              },
+              "total_strikes": {
+                "landed": 6.429507174048657,
+                "attempts": 7.064566437928883
+              },
+              "head_strikes": {
+                "landed": 1.287330573356774,
+                "attempts": 1.5493393069812285
+              },
+              "body_strikes": {
+                "landed": 0.1746724890829694,
+                "attempts": 0.4048658764815969
+              },
+              "leg_strikes": {
+                "landed": 0.3311688311688312,
+                "attempts": 0.474025974025974
+              },
+              "distance_strikes": {
+                "landed": 0.0,
+                "attempts": 0.0873362445414847
+              },
+              "clinch_strikes": {
+                "landed": 0.4025974025974025,
+                "attempts": 0.6883116883116882
+              },
+              "ground_strikes": {
+                "landed": 1.390574491011172,
+                "attempts": 1.6525832246356262
+              }
+            }
+          }
+        }
+      },
+      "fighter2": {
+        "id": "bf12aca029bfcc47",
+        "name": "Keith Hackney",
+        "nickname": "The Giant Killer",
+        "dob": "--",
+        "height": 71,
+        "weight": 200,
+        "reach": null,
+        "stance": "sideways",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 2,
+            "losses": 2,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:20",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 4,
+          "attempted": 13,
+          "Head": {
+            "landed": 3,
+            "attempted": 12
+          },
+          "Body": {
+            "landed": 1,
+            "attempted": 1
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 1,
+            "attempted": 3
+          },
+          "Clinch": {
+            "landed": 2,
+            "attempted": 4
+          },
+          "Ground": {
+            "landed": 1,
+            "attempted": 6
+          }
+        },
+        "Sig. str. %": 30.0,
+        "Total str.": {
+          "landed": 7,
+          "attempted": 16
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 4,
+              "attempted": 13,
+              "Head": {
+                "landed": 3,
+                "attempted": 12
+              },
+              "Body": {
+                "landed": 1,
+                "attempted": 1
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 1,
+                "attempted": 3
+              },
+              "Clinch": {
+                "landed": 2,
+                "attempted": 4
+              },
+              "Ground": {
+                "landed": 1,
+                "attempted": 6
+              }
+            },
+            "Sig. str. %": 30.0,
+            "Total str.": {
+              "landed": 7,
+              "attempted": 16
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.5,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 0.5,
+              "differential": 1.0,
+              "per_min": 0.1829268292682926
+            },
+            "reversals": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.5,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.5
+              },
+              "def": {
+                "avg": 50.0,
+                "differential": 0.5
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 21.0,
+                "differential": 21.0,
+                "per_min": 10.034843205574912
+              },
+              "attempts": {
+                "avg": 32.0,
+                "differential": 12.0,
+                "per_min": 15.16601762656282
+              },
+              "accuracy": {
+                "avg": 62.57142857142857,
+                "differential": 30.27142857142857
+              },
+              "def": {
+                "avg": 90.0,
+                "differential": 2.4166666666666665
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 23.0,
+                "differential": 5.75,
+                "per_min": 10.90489854478377
+              },
+              "attempts": {
+                "avg": 34.0,
+                "differential": 4.888888888888889,
+                "per_min": 16.036072965771673
+              },
+              "accuracy": {
+                "avg": 65.86538461538461,
+                "differential": 1.0913461538461535
+              },
+              "def": {
+                "avg": 27.777777777777786,
+                "differential": 0.9027777777777776
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 15.0,
+                "differential": 15.0,
+                "per_min": 7.493851199016192
+              },
+              "attempts": {
+                "avg": 25.0,
+                "differential": 7.0,
+                "per_min": 12.259171961467512
+              },
+              "accuracy": {
+                "avg": 42.22222222222222,
+                "differential": 11.611111111111107
+              },
+              "def": {
+                "avg": 90.0,
+                "differential": 1.75
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.5,
+                "differential": 1.0,
+                "per_min": 0.1829268292682926
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 1.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.0
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 6.0,
+                "differential": 6.0,
+                "per_min": 2.540992006558721
+              },
+              "attempts": {
+                "avg": 6.5,
+                "differential": 6.5,
+                "per_min": 2.7239188358270137
+              },
+              "accuracy": {
+                "avg": 93.75,
+                "differential": 93.75
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 54.0
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 4.0,
+                "differential": 4.0,
+                "per_min": 1.878458700553392
+              },
+              "attempts": {
+                "avg": 7.5,
+                "differential": 5.5,
+                "per_min": 3.297294527567124
+              },
+              "accuracy": {
+                "avg": 51.78571428571429,
+                "differential": 51.78571428571429
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 2.7
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 1.0,
+                "differential": 1.5,
+                "per_min": 0.5042016806722689
+              },
+              "attempts": {
+                "avg": 1.5,
+                "differential": 2.0,
+                "per_min": 0.7563025210084033
+              },
+              "accuracy": {
+                "avg": 33.33333333333333,
+                "differential": 33.83333333333333
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 2.0
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 16.0,
+                "differential": 16.0,
+                "per_min": 7.6521828243492545
+              },
+              "attempts": {
+                "avg": 23.0,
+                "differential": 10.0,
+                "per_min": 11.112420577987292
+              },
+              "accuracy": {
+                "avg": 76.19047619047619,
+                "differential": 43.85714285714285
+              },
+              "def": {
+                "avg": 83.33333333333334,
+                "differential": 4.499999999999998
+              }
+            },
+            "physicals": {
+              "height_differential": 0.9984375
+            }
+          }
+        }
+      }
+    },
+    {
+      "fight_id": "040ecf01338dff9e",
+      "method": "Submission",
+      "round": "1",
+      "time": "1:45",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "c670aa48827d6be6",
+        "name": "Dan Severn",
+        "nickname": "The Beast",
+        "dob": "08/06/1958",
+        "height": 74,
+        "weight": 250,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 101,
+            "losses": 19,
+            "draws": 1
+          }
+        },
+        "timestamp": "2025-02-10 19:55:21",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": "---",
+        "Total str.": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td": {
+          "landed": 2,
+          "attempted": 5
+        },
+        "Td %": 40.0,
+        "Sub. att": "1",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 0,
+              "attempted": 0,
+              "Head": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 0,
+            "Total str.": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td": {
+              "landed": 2,
+              "attempted": 5
+            },
+            "Td %": 40.0,
+            "Sub. att": 1,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      },
+      "fighter2": {
+        "id": "dedc3bb440d09554",
+        "name": "Anthony Macias",
+        "nickname": "Mad Dog",
+        "dob": "--",
+        "height": 69,
+        "weight": 185,
+        "reach": null,
+        "stance": "switch",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 26,
+            "losses": 18,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:21",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 8,
+          "attempted": 9,
+          "Head": {
+            "landed": 4,
+            "attempted": 4
+          },
+          "Body": {
+            "landed": 2,
+            "attempted": 2
+          },
+          "Leg": {
+            "landed": 2,
+            "attempted": 3
+          },
+          "Distance": {
+            "landed": 2,
+            "attempted": 3
+          },
+          "Clinch": {
+            "landed": 3,
+            "attempted": 3
+          },
+          "Ground": {
+            "landed": 3,
+            "attempted": 3
+          }
+        },
+        "Sig. str. %": 88.0,
+        "Total str.": {
+          "landed": 12,
+          "attempted": 14
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 8,
+              "attempted": 9,
+              "Head": {
+                "landed": 4,
+                "attempted": 4
+              },
+              "Body": {
+                "landed": 2,
+                "attempted": 2
+              },
+              "Leg": {
+                "landed": 2,
+                "attempted": 3
+              },
+              "Distance": {
+                "landed": 2,
+                "attempted": 3
+              },
+              "Clinch": {
+                "landed": 3,
+                "attempted": 3
+              },
+              "Ground": {
+                "landed": 3,
+                "attempted": 3
+              }
+            },
+            "Sig. str. %": 88.0,
+            "Total str.": {
+              "landed": 12,
+              "attempted": 14
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      }
+    },
+    {
+      "fight_id": "7e7d7a488ea21f63",
+      "method": "Submission",
+      "round": "1",
+      "time": "4:47",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "ad047e3073a775f3",
+        "name": "Steve Jennum",
+        "nickname": "",
+        "dob": "--",
+        "height": 70,
+        "weight": 215,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 2,
+            "losses": 3,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:22",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 13,
+          "attempted": 40,
+          "Head": {
+            "landed": 13,
+            "attempted": 36
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 2
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 2
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 6
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 13,
+            "attempted": 34
+          }
+        },
+        "Sig. str. %": 32.0,
+        "Total str.": {
+          "landed": 29,
+          "attempted": 70
+        },
+        "Td": {
+          "landed": 2,
+          "attempted": 3
+        },
+        "Td %": 66.0,
+        "Sub. att": "1",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 13,
+              "attempted": 40,
+              "Head": {
+                "landed": 13,
+                "attempted": 36
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 2
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 2
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 6
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 13,
+                "attempted": 34
+              }
+            },
+            "Sig. str. %": 32.0,
+            "Total str.": {
+              "landed": 29,
+              "attempted": 70
+            },
+            "Td": {
+              "landed": 2,
+              "attempted": 3
+            },
+            "Td %": 66.0,
+            "Sub. att": 1,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 0.0,
+              "differential": 0.0,
+              "per_min": 0.0
+            },
+            "reversals": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 1.0,
+                "differential": 1.0,
+                "per_min": 0.6896551724137931
+              },
+              "attempts": {
+                "avg": 1.0,
+                "differential": 1.0,
+                "per_min": 0.6896551724137931
+              },
+              "accuracy": {
+                "avg": 100.0,
+                "differential": 100.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 100.0
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 6.0,
+                "differential": 3.0,
+                "per_min": 4.137931034482759
+              },
+              "attempts": {
+                "avg": 11.0,
+                "differential": 1.8333333333333333,
+                "per_min": 7.586206896551722
+              },
+              "accuracy": {
+                "avg": 54.54545454545454,
+                "differential": 1.6363636363636365
+              },
+              "def": {
+                "avg": 66.66666666666667,
+                "differential": 1.4666666666666666
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 7.0,
+                "differential": 2.333333333333333,
+                "per_min": 4.827586206896552
+              },
+              "attempts": {
+                "avg": 13.0,
+                "differential": 1.8571428571428568,
+                "per_min": 8.965517241379311
+              },
+              "accuracy": {
+                "avg": 53.84615384615386,
+                "differential": 1.2564102564102566
+              },
+              "def": {
+                "avg": 57.14285714285714,
+                "differential": 1.238095238095238
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 6.0,
+                "differential": 3.0,
+                "per_min": 4.137931034482759
+              },
+              "attempts": {
+                "avg": 11.0,
+                "differential": 1.8333333333333333,
+                "per_min": 7.586206896551722
+              },
+              "accuracy": {
+                "avg": 54.54545454545454,
+                "differential": 1.6363636363636365
+              },
+              "def": {
+                "avg": 66.66666666666667,
+                "differential": 1.4666666666666666
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 1.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.0
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 1.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.0
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 1.0,
+                "differential": 1.0,
+                "per_min": 0.6896551724137931
+              },
+              "attempts": {
+                "avg": 2.0,
+                "differential": 0.5,
+                "per_min": 1.3793103448275863
+              },
+              "accuracy": {
+                "avg": 50.0,
+                "differential": 2.0
+              },
+              "def": {
+                "avg": 75.0,
+                "differential": 1.5
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.0
+              },
+              "def": {
+                "avg": 0.0,
+                "differential": 0.0
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 5.0,
+                "differential": 5.0,
+                "per_min": 3.4482758620689657
+              },
+              "attempts": {
+                "avg": 9.0,
+                "differential": 9.0,
+                "per_min": 6.206896551724138
+              },
+              "accuracy": {
+                "avg": 55.55555555555557,
+                "differential": 55.55555555555557
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 2.25
+              }
+            },
+            "physicals": {
+              "height_differential": 0.945945945945946
+            }
+          }
+        }
+      },
+      "fighter2": {
+        "id": "81ca2c245b19b3c5",
+        "name": "Melton Bowen",
+        "nickname": "The Punisher",
+        "dob": "16/07/1969",
+        "height": 72,
+        "weight": 225,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 0,
+            "losses": 1,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:23",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 1,
+          "attempted": 4,
+          "Head": {
+            "landed": 1,
+            "attempted": 4
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 3
+          },
+          "Clinch": {
+            "landed": 1,
+            "attempted": 1
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 25.0,
+        "Total str.": {
+          "landed": 48,
+          "attempted": 59
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 1,
+              "attempted": 4,
+              "Head": {
+                "landed": 1,
+                "attempted": 4
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 3
+              },
+              "Clinch": {
+                "landed": 1,
+                "attempted": 1
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 25.0,
+            "Total str.": {
+              "landed": 48,
+              "attempted": 59
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      }
+    },
+    {
+      "fight_id": "ccccc0a22b05eac6",
+      "method": "Submission",
+      "round": "1",
+      "time": "2:44",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "bf12aca029bfcc47",
+        "name": "Keith Hackney",
+        "nickname": "The Giant Killer",
+        "dob": "--",
+        "height": 71,
+        "weight": 200,
+        "reach": null,
+        "stance": "sideways",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 2,
+            "losses": 2,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:23",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 8,
+          "attempted": 14,
+          "Head": {
+            "landed": 1,
+            "attempted": 5
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 1
+          },
+          "Leg": {
+            "landed": 7,
+            "attempted": 8
+          },
+          "Distance": {
+            "landed": 2,
+            "attempted": 7
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 6,
+            "attempted": 7
+          }
+        },
+        "Sig. str. %": 57.0,
+        "Total str.": {
+          "landed": 10,
+          "attempted": 16
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "1",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 8,
+              "attempted": 14,
+              "Head": {
+                "landed": 1,
+                "attempted": 5
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 1
+              },
+              "Leg": {
+                "landed": 7,
+                "attempted": 8
+              },
+              "Distance": {
+                "landed": 2,
+                "attempted": 7
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 6,
+                "attempted": 7
+              }
+            },
+            "Sig. str. %": 57.0,
+            "Total str.": {
+              "landed": 10,
+              "attempted": 16
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 1,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 1.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 0.0,
+              "differential": 1.0,
+              "per_min": 0.0
+            },
+            "reversals": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 0.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 1.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.0
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 34.0,
+                "differential": 34.0,
+                "per_min": 17.142857142857142
+              },
+              "attempts": {
+                "avg": 50.0,
+                "differential": 10.0,
+                "per_min": 25.210084033613445
+              },
+              "accuracy": {
+                "avg": 68.0,
+                "differential": 3.4
+              },
+              "def": {
+                "avg": 80.0,
+                "differential": 2.5
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 36.0,
+                "differential": 9.0,
+                "per_min": 18.15126050420168
+              },
+              "attempts": {
+                "avg": 52.0,
+                "differential": 5.777777777777778,
+                "per_min": 26.218487394957982
+              },
+              "accuracy": {
+                "avg": 69.23076923076923,
+                "differential": 1.5576923076923077
+              },
+              "def": {
+                "avg": 55.55555555555557,
+                "differential": 1.805555555555556
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 29.0,
+                "differential": 29.0,
+                "per_min": 14.621848739495798
+              },
+              "attempts": {
+                "avg": 45.0,
+                "differential": 9.0,
+                "per_min": 22.689075630252105
+              },
+              "accuracy": {
+                "avg": 64.44444444444444,
+                "differential": 3.2222222222222223
+              },
+              "def": {
+                "avg": 80.0,
+                "differential": 2.25
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.0,
+                "differential": 1.0,
+                "per_min": 0.0
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 1.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.0
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 5.0,
+                "differential": 5.0,
+                "per_min": 2.5210084033613445
+              },
+              "attempts": {
+                "avg": 5.0,
+                "differential": 5.0,
+                "per_min": 2.5210084033613445
+              },
+              "accuracy": {
+                "avg": 100.0,
+                "differential": 100.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 100.0
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 6.0,
+                "differential": 6.0,
+                "per_min": 3.0252100840336134
+              },
+              "attempts": {
+                "avg": 8.0,
+                "differential": 4.0,
+                "per_min": 4.033613445378151
+              },
+              "accuracy": {
+                "avg": 75.0,
+                "differential": 75.0
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 4.0
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 2.0,
+                "differential": 2.0,
+                "per_min": 1.0084033613445378
+              },
+              "attempts": {
+                "avg": 3.0,
+                "differential": 3.0,
+                "per_min": 1.512605042016807
+              },
+              "accuracy": {
+                "avg": 66.66666666666666,
+                "differential": 66.66666666666666
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 2.9999999999999987
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 26.0,
+                "differential": 26.0,
+                "per_min": 13.109243697478991
+              },
+              "attempts": {
+                "avg": 39.0,
+                "differential": 13.0,
+                "per_min": 19.663865546218485
+              },
+              "accuracy": {
+                "avg": 66.66666666666666,
+                "differential": 2.0
+              },
+              "def": {
+                "avg": 66.66666666666667,
+                "differential": 2.0
+              }
+            },
+            "physicals": {
+              "height_differential": 0.8875
+            }
+          }
+        }
+      },
+      "fighter2": {
+        "id": "83b743fedde154fb",
+        "name": "Joe Son",
+        "nickname": "",
+        "dob": "22/11/1970",
+        "height": 64,
+        "weight": 236,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 0,
+            "losses": 4,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:24",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": "---",
+        "Total str.": {
+          "landed": 4,
+          "attempted": 4
+        },
+        "Td": {
+          "landed": 1,
+          "attempted": 1
+        },
+        "Td %": 100.0,
+        "Sub. att": "1",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 0,
+              "attempted": 0,
+              "Head": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 0
+              }
+            },
+            "Sig. str. %": 0,
+            "Total str.": {
+              "landed": 4,
+              "attempted": 4
+            },
+            "Td": {
+              "landed": 1,
+              "attempted": 1
+            },
+            "Td %": 100.0,
+            "Sub. att": 1,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      }
+    },
+    {
+      "fight_id": "0b71ada6c9209fc9",
+      "method": "Submission",
+      "round": "1",
+      "time": "3:49",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "429e7d3725852ce9",
+        "name": "Royce Gracie",
+        "nickname": "",
+        "dob": "12/12/1966",
+        "height": 73,
+        "weight": 175,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.88,
+          "Str. Acc.:": 41.0,
+          "SApM": 1.13,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 66.0,
+          "Sub. Avg.": 0.8,
+          "record": {
+            "wins": 15,
+            "losses": 2,
+            "draws": 3
+          }
+        },
+        "timestamp": "2025-02-10 19:55:25",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 7,
+          "attempted": 11,
+          "Head": {
+            "landed": 5,
+            "attempted": 8
+          },
+          "Body": {
+            "landed": 2,
+            "attempted": 3
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 1
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 7,
+            "attempted": 10
+          }
+        },
+        "Sig. str. %": 63.0,
+        "Total str.": {
+          "landed": 27,
+          "attempted": 31
+        },
+        "Td": {
+          "landed": 1,
+          "attempted": 1
+        },
+        "Td %": 100.0,
+        "Sub. att": "1",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 7,
+              "attempted": 11,
+              "Head": {
+                "landed": 5,
+                "attempted": 8
+              },
+              "Body": {
+                "landed": 2,
+                "attempted": 3
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 1
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 7,
+                "attempted": 10
+              }
+            },
+            "Sig. str. %": 63.0,
+            "Total str.": {
+              "landed": 27,
+              "attempted": 31
+            },
+            "Td": {
+              "landed": 1,
+              "attempted": 1
+            },
+            "Td %": 100.0,
+            "Sub. att": 1,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {
+            "knockdowns": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "sub_attempts": {
+              "avg": 1.0,
+              "differential": 1.2,
+              "per_min": 0.4317518302592929
+            },
+            "reversals": {
+              "avg": 0.4,
+              "differential": 1.0
+            },
+            "control": {
+              "avg": 0.0,
+              "differential": 1.0
+            },
+            "takedowns": {
+              "landed": {
+                "avg": 0.6,
+                "differential": 0.6,
+                "per_min": 0.3266733266733266
+              },
+              "attempts": {
+                "avg": 1.4,
+                "differential": 1.4,
+                "per_min": 0.7000999000999001
+              },
+              "accuracy": {
+                "avg": 40.0,
+                "differential": 40.0
+              },
+              "def": {
+                "avg": 60.0,
+                "differential": 20.8
+              }
+            },
+            "significant_strikes": {
+              "landed": {
+                "avg": 1.6,
+                "differential": 1.4,
+                "per_min": 0.7870129870129869
+              },
+              "attempts": {
+                "avg": 2.8,
+                "differential": 1.0476190476190477,
+                "per_min": 1.0363636363636364
+              },
+              "accuracy": {
+                "avg": 36.66666666666666,
+                "differential": 1.1333333333333333
+              },
+              "def": {
+                "avg": 68.0952380952381,
+                "differential": 10.72857142857143
+              }
+            },
+            "total_strikes": {
+              "landed": {
+                "avg": 27.6,
+                "differential": 3.9,
+                "per_min": 6.728571428571428
+              },
+              "attempts": {
+                "avg": 29.2,
+                "differential": 2.978333333333333,
+                "per_min": 7.055844155844157
+              },
+              "accuracy": {
+                "avg": 55.48872180451129,
+                "differential": 1.2271512113617375
+              },
+              "def": {
+                "avg": 59.66666666666667,
+                "differential": 8.911666666666667
+              }
+            },
+            "head_strikes": {
+              "landed": {
+                "avg": 0.8,
+                "differential": 1.0666666666666669,
+                "per_min": 0.5103896103896104
+              },
+              "attempts": {
+                "avg": 0.8,
+                "differential": 1.0333333333333334,
+                "per_min": 0.5103896103896104
+              },
+              "accuracy": {
+                "avg": 40.0,
+                "differential": 20.8
+              },
+              "def": {
+                "avg": 80.0,
+                "differential": 30.5
+              }
+            },
+            "body_strikes": {
+              "landed": {
+                "avg": 0.0,
+                "differential": 0.6,
+                "per_min": 0.0
+              },
+              "attempts": {
+                "avg": 0.4,
+                "differential": 0.8,
+                "per_min": 0.0857142857142857
+              },
+              "accuracy": {
+                "avg": 0.0,
+                "differential": 0.6
+              },
+              "def": {
+                "avg": 70.0,
+                "differential": 0.7
+              }
+            },
+            "leg_strikes": {
+              "landed": {
+                "avg": 0.8,
+                "differential": 1.2,
+                "per_min": 0.2766233766233766
+              },
+              "attempts": {
+                "avg": 1.6,
+                "differential": 2.0,
+                "per_min": 0.4402597402597401
+              },
+              "accuracy": {
+                "avg": 36.66666666666666,
+                "differential": 30.46666666666667
+              },
+              "def": {
+                "avg": 80.0,
+                "differential": 20.8
+              }
+            },
+            "distance_strikes": {
+              "landed": {
+                "avg": 0.4,
+                "differential": 1.2,
+                "per_min": 0.0779220779220779
+              },
+              "attempts": {
+                "avg": 0.8,
+                "differential": 0.8,
+                "per_min": 0.1558441558441558
+              },
+              "accuracy": {
+                "avg": 10.0,
+                "differential": 10.8
+              },
+              "def": {
+                "avg": 100.0,
+                "differential": 1.2
+              }
+            },
+            "clinch_strikes": {
+              "landed": {
+                "avg": 0.6,
+                "differential": 0.9333333333333332,
+                "per_min": 0.2415584415584416
+              },
+              "attempts": {
+                "avg": 1.4,
+                "differential": 1.2,
+                "per_min": 0.4129870129870129
+              },
+              "accuracy": {
+                "avg": 26.666666666666664,
+                "differential": 0.8666666666666666
+              },
+              "def": {
+                "avg": 60.0,
+                "differential": 0.8
+              }
+            },
+            "ground_strikes": {
+              "landed": {
+                "avg": 0.6,
+                "differential": 1.0,
+                "per_min": 0.4675324675324675
+              },
+              "attempts": {
+                "avg": 0.6,
+                "differential": 1.0,
+                "per_min": 0.4675324675324675
+              },
+              "accuracy": {
+                "avg": 20.0,
+                "differential": 20.4
+              },
+              "def": {
+                "avg": 76.0,
+                "differential": 20.56
+              }
+            },
+            "physicals": {
+              "height_differential": 1.010174881208726,
+              "age_differential": 1.0081622294265973
+            }
+          },
+          "recent": {
+            "knockdowns": 0.0,
+            "sub_attempts": 0.6666666666666666,
+            "reversals": 0.3333333333333333,
+            "control": 0.0,
+            "takedowns": {
+              "landed": 0.6666666666666666,
+              "attempts": 2.0,
+              "accuracy": 33.333333333333336,
+              "def": 1.3333333333333333
+            },
+            "significant_strikes": {
+              "landed": 1.7777777777777777,
+              "attempts": 1.222222222222222,
+              "accuracy": 1.1666666666666667,
+              "def": 17.166666666666668
+            },
+            "total_strikes": {
+              "landed": 3.111111111111111,
+              "attempts": 2.2555555555555555,
+              "accuracy": 1.283068783068783,
+              "def": 12.144444444444444
+            },
+            "head_strikes": {
+              "landed": 1.4444444444444444,
+              "attempts": 1.3888888888888893,
+              "accuracy": 34.333333333333336,
+              "def": 50.33333333333334
+            },
+            "body_strikes": {
+              "landed": 0.3333333333333333,
+              "attempts": 0.6666666666666666,
+              "accuracy": 0.3333333333333333,
+              "def": 0.5
+            },
+            "leg_strikes": {
+              "landed": 1.0,
+              "attempts": 1.6666666666666667,
+              "accuracy": 33.77777777777778,
+              "def": 33.666666666666664
+            },
+            "distance_strikes": {
+              "landed": 1.0,
+              "attempts": 0.3333333333333333,
+              "accuracy": 1.0,
+              "def": 1.0
+            },
+            "clinch_strikes": {
+              "landed": 0.8888888888888888,
+              "attempts": 1.3333333333333333,
+              "accuracy": 0.7777777777777777,
+              "def": 0.6666666666666666
+            },
+            "ground_strikes": {
+              "landed": 1.3333333333333333,
+              "attempts": 1.3333333333333333,
+              "accuracy": 33.666666666666664,
+              "def": 33.800000000000004
+            },
+            "physicals": {
+              "height_differential": 0.9777177177177178,
+              "knockdowns_differential": 1.0,
+              "sub_attempts_differential": 1.0,
+              "reversals_differential": 1.0,
+              "control_differential": 1.0
+            },
+            "per_min": {
+              "takedowns": {
+                "landed": 0.4795204795204795,
+                "attempts": 1.1018981018981018
+              },
+              "significant_strikes": {
+                "landed": 1.1818181818181817,
+                "attempts": 1.4675324675324677
+              },
+              "total_strikes": {
+                "landed": 4.071428571428571,
+                "attempts": 4.357142857142857
+              },
+              "head_strikes": {
+                "landed": 0.8506493506493507,
+                "attempts": 0.8506493506493507
+              },
+              "body_strikes": {
+                "landed": 0.0,
+                "attempts": 0.1428571428571428
+              },
+              "leg_strikes": {
+                "landed": 0.3311688311688312,
+                "attempts": 0.474025974025974
+              },
+              "distance_strikes": {
+                "landed": 0.0,
+                "attempts": 0.0
+              },
+              "clinch_strikes": {
+                "landed": 0.4025974025974025,
+                "attempts": 0.6883116883116882
+              },
+              "ground_strikes": {
+                "landed": 0.7792207792207791,
+                "attempts": 0.7792207792207791
+              }
+            }
+          }
+        }
+      },
+      "fighter2": {
+        "id": "23ab42947c1990e3",
+        "name": "Ron van Clief",
+        "nickname": "The Black Dragon",
+        "dob": "25/01/1943",
+        "height": 70,
+        "weight": 190,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 0,
+            "losses": 1,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:25",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 2,
+          "Head": {
+            "landed": 0,
+            "attempted": 2
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 2
+          }
+        },
+        "Sig. str. %": 0.0,
+        "Total str.": {
+          "landed": 0,
+          "attempted": 2
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 0,
+              "attempted": 2,
+              "Head": {
+                "landed": 0,
+                "attempted": 2
+              },
+              "Body": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Leg": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Clinch": {
+                "landed": 0,
+                "attempted": 0
+              },
+              "Ground": {
+                "landed": 0,
+                "attempted": 2
+              }
+            },
+            "Sig. str. %": 0.0,
+            "Total str.": {
+              "landed": 0,
+              "attempted": 2
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      }
+    },
+    {
+      "fight_id": "8f8f47a728c3127e",
+      "method": "KO/TKO",
+      "round": "1",
+      "time": "2:13",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "946f341df6472ee0",
+        "name": "Guy Mezger",
+        "nickname": "",
+        "dob": "01/01/1968",
+        "height": 73,
+        "weight": 200,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 2.3,
+          "Str. Acc.:": 32.0,
+          "SApM": 1.36,
+          "TD. Avg.": 0.39,
+          "TD. Acc.": 50.0,
+          "TD, Def": 88.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 30,
+            "losses": 14,
+            "draws": 2
+          }
+        },
+        "timestamp": "2025-02-10 19:55:26",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 19,
+          "attempted": 30,
+          "Head": {
+            "landed": 17,
+            "attempted": 28
+          },
+          "Body": {
+            "landed": 1,
+            "attempted": 1
+          },
+          "Leg": {
+            "landed": 1,
+            "attempted": 1
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 1
+          },
+          "Clinch": {
+            "landed": 4,
+            "attempted": 5
+          },
+          "Ground": {
+            "landed": 15,
+            "attempted": 24
+          }
+        },
+        "Sig. str. %": 63.0,
+        "Total str.": {
+          "landed": 23,
+          "attempted": 34
+        },
+        "Td": {
+          "landed": 1,
+          "attempted": 1
+        },
+        "Td %": 100.0,
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 0,
+            "Sig. str.": {
+              "landed": 19,
+              "attempted": 30,
+              "Head": {
+                "landed": 17,
+                "attempted": 28
+              },
+              "Body": {
+                "landed": 1,
+                "attempted": 1
+              },
+              "Leg": {
+                "landed": 1,
+                "attempted": 1
+              },
+              "Distance": {
+                "landed": 0,
+                "attempted": 1
+              },
+              "Clinch": {
+                "landed": 4,
+                "attempted": 5
+              },
+              "Ground": {
+                "landed": 15,
+                "attempted": 24
+              }
+            },
+            "Sig. str. %": 63.0,
+            "Total str.": {
+              "landed": 23,
+              "attempted": 34
+            },
+            "Td": {
+              "landed": 1,
+              "attempted": 1
+            },
+            "Td %": 100.0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      },
+      "fighter2": {
+        "id": "adea9f0090aa8e14",
+        "name": "Jason Fairn",
+        "nickname": "",
+        "dob": "--",
+        "height": 73,
+        "weight": 230,
+        "reach": null,
+        "stance": "",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 4,
+            "losses": 5,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:27",
+        "result": "L",
+        "KD": 1,
+        "Sig. str.": {
+          "landed": 9,
+          "attempted": 12,
+          "Head": {
+            "landed": 5,
+            "attempted": 8
+          },
+          "Body": {
+            "landed": 2,
+            "attempted": 2
+          },
+          "Leg": {
+            "landed": 2,
+            "attempted": 2
+          },
+          "Distance": {
+            "landed": 1,
+            "attempted": 4
+          },
+          "Clinch": {
+            "landed": 4,
+            "attempted": 4
+          },
+          "Ground": {
+            "landed": 4,
+            "attempted": 4
+          }
+        },
+        "Sig. str. %": 75.0,
+        "Total str.": {
+          "landed": 12,
+          "attempted": 15
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": "---",
+        "Sub. att": "0",
+        "Rev.": "0",
+        "Ctrl": "--",
+        "rounds": {
+          "round1": {
+            "KD": 1,
+            "Sig. str.": {
+              "landed": 9,
+              "attempted": 12,
+              "Head": {
+                "landed": 5,
+                "attempted": 8
+              },
+              "Body": {
+                "landed": 2,
+                "attempted": 2
+              },
+              "Leg": {
+                "landed": 2,
+                "attempted": 2
+              },
+              "Distance": {
+                "landed": 1,
+                "attempted": 4
+              },
+              "Clinch": {
+                "landed": 4,
+                "attempted": 4
+              },
+              "Ground": {
+                "landed": 4,
+                "attempted": 4
+              }
+            },
+            "Sig. str. %": 75.0,
+            "Total str.": {
+              "landed": 12,
+              "attempted": 15
+            },
+            "Td": {
+              "landed": 0,
+              "attempted": 0
+            },
+            "Td %": 0,
+            "Sub. att": 0,
+            "Rev.": 0,
+            "Ctrl": "--"
+          }
+        },
+        "pre_comp": {
+          "overall": {}
+        }
+      }
+    },
+    {
+      "fight_id": "b80e6a799c95d499",
+      "method": "KO/TKO",
+      "round": "1",
+      "time": "4:55",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "e8fb8e53bc2e29d6",
+        "name": "Marcus Bossett",
+        "nickname": "The Grasshopper",
+        "dob": "--",
+        "height": 73,
+        "weight": 215,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 1,
+            "losses": 3,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:27",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 0.0,
+        "Total str.": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": 0.0,
+        "Sub. att": 0,
+        "Rev.": 0,
+        "Ctrl": "",
+        "rounds": {},
+        "pre_comp": null
+      },
+      "fighter2": {
+        "id": "ee5df903f80c6816",
+        "name": "Eldo Xavier Dias",
+        "nickname": "",
+        "dob": "16/07/1964",
+        "height": 71,
+        "weight": 180,
+        "reach": null,
+        "stance": "",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 0,
+            "losses": 1,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:28",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 0.0,
+        "Total str.": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": 0.0,
+        "Sub. att": 0,
+        "Rev.": 0,
+        "Ctrl": "",
+        "rounds": {},
+        "pre_comp": null
+      }
+    },
+    {
+      "fight_id": "a1db4c917777aa79",
+      "method": "Submission",
+      "round": "1",
+      "time": "0:14",
+      "time_format": "No Time Limit",
+      "referee": "John McCarthy",
+      "details": [],
+      "fighter1": {
+        "id": "19ffeb5e3fffd6d5",
+        "name": "Joe Charles",
+        "nickname": "The Ghetto Man",
+        "dob": "--",
+        "height": 73,
+        "weight": 260,
+        "reach": null,
+        "stance": "southpaw",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 6,
+            "losses": 13,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:30",
+        "result": "W",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 0.0,
+        "Total str.": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": 0.0,
+        "Sub. att": 0,
+        "Rev.": 0,
+        "Ctrl": "",
+        "rounds": {},
+        "pre_comp": null
+      },
+      "fighter2": {
+        "id": "598a58db87b890ee",
+        "name": "Kevin Rosier",
+        "nickname": "",
+        "dob": "--",
+        "height": 76,
+        "weight": 275,
+        "reach": null,
+        "stance": "orthodox",
+        "stats": {
+          "SLpM": 0.0,
+          "Str. Acc.:": 0.0,
+          "SApM": 0.0,
+          "TD. Avg.": 0.0,
+          "TD. Acc.": 0.0,
+          "TD, Def": 0.0,
+          "Sub. Avg.": 0.0,
+          "record": {
+            "wins": 2,
+            "losses": 6,
+            "draws": 0
+          }
+        },
+        "timestamp": "2025-02-10 19:55:31",
+        "result": "L",
+        "KD": 0,
+        "Sig. str.": {
+          "landed": 0,
+          "attempted": 0,
+          "Head": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Body": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Leg": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Distance": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Clinch": {
+            "landed": 0,
+            "attempted": 0
+          },
+          "Ground": {
+            "landed": 0,
+            "attempted": 0
+          }
+        },
+        "Sig. str. %": 0.0,
+        "Total str.": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td": {
+          "landed": 0,
+          "attempted": 0
+        },
+        "Td %": 0.0,
+        "Sub. att": 0,
+        "Rev.": 0,
+        "Ctrl": "",
+        "rounds": {},
+        "pre_comp": null
+      }
+    }
+  ]
+}
