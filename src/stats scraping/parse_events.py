@@ -87,8 +87,6 @@ def pull_upcoming_events():
             if "event-details" in href:
                 event_urls.append(href.strip())
 
-    # print("Found event URLs:", event_urls)
-
     # Now call your scrape_event.py main function on each
     for event_url in event_urls:
         # print(f"Scraping event: {event_url}")
