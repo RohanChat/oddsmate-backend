@@ -60,26 +60,60 @@ def extract_event_id(event_url):
         return m.group(1)
     return ""
 
+def pull_upcoming_events():
+    url = "http://ufcstats.com/statistics/events/upcoming"
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/90.0.4430.212 Safari/537.36"
+        )
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Print the HTML to see if the events are even there
+    # print(soup.prettify())
+
+    # Gather event URLs by row
+    rows = soup.find_all("tr", class_="b-statistics__table-row")
+    event_urls = []
+    for row in rows:
+        link = row.find("a", class_="b-link b-link_style_black")
+        if link:
+            href = link.get("href", "")
+            if "event-details" in href:
+                event_urls.append(href.strip())
+
+    # print("Found event URLs:", event_urls)
+
+    # Now call your scrape_event.py main function on each
+    for event_url in event_urls:
+        # print(f"Scraping event: {event_url}")
+        scrape_event_main(event_url)
+
 def main():
     # This is the URL that lists all completed events (with pagination).
-    all_completed_url = "http://ufcstats.com/statistics/events/completed?page=all"
+    # all_completed_url = "http://ufcstats.com/statistics/events/completed?page=all"
     
-    # 1. Gather all event URLs from that page.
-    event_urls = get_event_urls(all_completed_url)
+    # # 1. Gather all event URLs from that page.
+    # event_urls = get_event_urls(all_completed_url)
     
-    # 2. For each event URL, run scrape_event_main(event_url).
-    #    Meanwhile, build a list of the event ids.
-    event_ids = []
-    for url in event_urls:
-        # Run the main function from scrape_event.py on this URL.
-        # This call presumably handles all your per-event scraping and JSON output
-        # or any other logic you have in scrape_event.py.
-        scrape_event_main(url)
+    # # 2. For each event URL, run scrape_event_main(event_url).
+    # #    Meanwhile, build a list of the event ids.
+    # event_ids = []
+    # for url in event_urls:
+    #     # Run the main function from scrape_event.py on this URL.
+    #     # This call presumably handles all your per-event scraping and JSON output
+    #     # or any other logic you have in scrape_event.py.
+    #     scrape_event_main(url)
         
-        # Extract the event id from the URL and add to our list for final JSON output
-        evt_id = extract_event_id(url)
-        if evt_id:
-            event_ids.append(evt_id)
+    #     # Extract the event id from the URL and add to our list for final JSON output
+    #     evt_id = extract_event_id(url)
+    #     if evt_id:
+    #         event_ids.append(evt_id)
 
     # 3. Build a JSON object with the structure:
     #    {
@@ -89,15 +123,16 @@ def main():
     #         ...
     #      ]
     #    }
-    final_json = {
-        "completed_events": event_ids
-    }
+    # final_json = {
+    #     "completed_events": event_ids
+    # }
     
-    with open("stats_scrape.json", "w") as f:
-        f.write(json.dumps(final_json, indent=2))
+    # with open("stats_scrape.json", "w") as f:
+    #     f.write(json.dumps(final_json, indent=2))
 
-    # 4. Print or return the final JSON
-    return json.dumps(final_json, indent=2)
+    # # 4. Print or return the final JSON
+    # return json.dumps(final_json, indent=2)
+    pull_upcoming_events()
 
 
 if __name__ == "__main__":

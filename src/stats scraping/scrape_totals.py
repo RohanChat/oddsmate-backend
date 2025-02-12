@@ -1,3 +1,4 @@
+import os
 import re
 import json
 import requests
@@ -182,7 +183,7 @@ def extract_all_tables(soup):
 
 # --- Main scraper function that builds the new JSON structure ---
 
-def main(fight_url = "http://ufcstats.com/fight-details/358f816aff469270"):
+def main(fight_url = "http://ufcstats.com/fight-details/358f816aff469270", output_dir = "fight_output.json"):
     # Replace with the actual fight URL you want to scrape.
     
     
@@ -325,8 +326,8 @@ def main(fight_url = "http://ufcstats.com/fight-details/358f816aff469270"):
         final_output[key] = fighter_data
     
     # 5. Write the final JSON to a file with proper formatting.
-    output_file = "fight_details.json"
-    with open(output_file, "w") as f:
+    output_file_path = os.path.join(output_dir, f"{fight_id}.json")
+    with open(output_file_path, "w") as f:
         json.dump(final_output, f, indent=2)
     
     # Optional: print to console.

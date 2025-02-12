@@ -9,6 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import scrape_totals
+import os
 
 # --- Configuration: Replace these with your own API keys ---
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_KEY")
@@ -129,6 +130,11 @@ def main(event_url="http://ufcstats.com/event-details/9fd1f08dd4aec14a"):
     
     # Extract all fight ids from the event page.
     fight_ids = extract_fight_ids(soup)
+
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+    output_dir = os.path.join(base_dir, "data", "raw", "stats", "event dumps", f"{event_id}")
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
     
     # Build the final JSON object.
     output = {
@@ -140,15 +146,17 @@ def main(event_url="http://ufcstats.com/event-details/9fd1f08dd4aec14a"):
             "elevation": elevation
         },
         "fights": [
-            scrape_totals.main(f"http://ufcstats.com/fight-details/{fight_id}")
+            scrape_totals.main(f"http://ufcstats.com/fight-details/{fight_id}", output_dir)
             for fight_id in fight_ids
         ]
         # "fights_ids": fight_ids  # A list of fight ids (the parts after "fight-details/")
     }
     
+
     # Output the JSON
     print(json.dumps(output, indent=2))
-    with open(f"{event_id}.json", "w") as json_file:
+    output_file_path = os.path.join(output_dir, f"{event_id}.json")
+    with open(output_file_path, "w") as json_file:
         json.dump(output, json_file, indent=2)
     return json.dumps(output, indent=2)
 
