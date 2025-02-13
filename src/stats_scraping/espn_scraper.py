@@ -382,8 +382,8 @@ class ESPNHistoricalScrapper():
         """
         # print("[INFO] Getting fight statistics...")
         fight_statistics = fight.find_all(attrs={"data-wrapping": "MMAMatchup"})
-        for fight_statistic in fight_statistics:
-            fight_list = fight_statistic.find_all("li")
+        for stat in fight_statistics:
+            fight_list = stat.find_all("li")
             for fight_in_list in fight_list:
                 lhs_rhs_values = fight_in_list.find_all("div", class_="MMAMatchup__Stat ns8 MMAMatchup__Stat__Text")
                 lhs_rhs_array = [lhs_rhs_value.text for lhs_rhs_value in lhs_rhs_values]
