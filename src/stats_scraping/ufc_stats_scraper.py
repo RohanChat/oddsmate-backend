@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # print(scraper.get_fighter_stats("0d7b51c9d2649a6e"))  # Example fighter ID
 
     # # To pull all upcoming events:
-    # scraper.get_upcoming()
+    scraper.get_upcoming()
 
     # # To pull the most recent completed event:
     # scraper.get_latest()

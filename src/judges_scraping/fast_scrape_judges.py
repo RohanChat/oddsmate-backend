@@ -330,7 +330,7 @@ class AsyncJudgeScraper:
             browser = await p.chromium.launch(headless=True)
             event_data = await self.parse_latest_event(browser)
             if event_data:
-                timestamp = datetime.datetime.now().isoformat()
+                timestamp = datetime.now().isoformat()
                 output_dir = os.path.join(os.path.dirname(__file__), '../../data/raw/judging', timestamp)
                 os.makedirs(output_dir, exist_ok=True)
                 output_path = os.path.join(output_dir, "latest_event.json")
@@ -362,7 +362,7 @@ if __name__ == "__main__":
     scraper = AsyncJudgeScraper()
     
     # To run the latest event scraper:
-    # asyncio.run(scraper.run_latest())
+    asyncio.run(scraper.run_latest())
     
-    # To process all events (adjust the years as desired):
-    asyncio.run(scraper.run_all())
+    # # To process all events (adjust the years as desired):
+    # asyncio.run(scraper.run_all(1997,1999))
