@@ -205,7 +205,9 @@ def scrape_precomp_stats(fight_url, fighter_url):
         }
     }
     """
-    csv_path = os.path.join(os.path.dirname(__file__), "../../data/raw/UNCLEANED_2.csv")
+    
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+    csv_path = os.path.join(base_dir, "data/raw/UNCLEANED_2.csv")
     
     with open(csv_path, mode="r", newline="") as csvfile:
         reader = csv.DictReader(csvfile)

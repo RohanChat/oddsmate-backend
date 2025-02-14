@@ -5,9 +5,9 @@ import requests
 from bs4 import BeautifulSoup
 
 # Assume these functions are implemented in your modules.
-from scrape_bio import scrape_fighter_stats       # should accept a fighter URL and return a dict
-from scrape_round import scrape_round_by_round_stats   # should accept (fight_url, fighter_url) and return a dict
-from scrape_pre_comp import scrape_precomp_stats   # should accept (fight_url, fighter_url) and return a dict
+from utils.scrape_bio import scrape_fighter_stats       # should accept a fighter URL and return a dict
+from utils.scrape_round import scrape_round_by_round_stats   # should accept (fight_url, fighter_url) and return a dict
+from utils.scrape_pre_comp import scrape_precomp_stats   # should accept (fight_url, fighter_url) and return a dict
 
 # --- Helper functions for extracting data from the fight page ---
 

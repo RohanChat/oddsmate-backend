@@ -736,7 +736,8 @@ class LiveESPNScraper():
 
 
 if __name__ == "__main__":
-    # historical_scraper = ESPNHistoricalScrapper()
-    # historical_scraper.get_historical_fight_info()
-    # live_scraper = LiveESPNScraper()
-    # asyncio.run(live_scraper.monitor_fight())
+    # print("Ran")
+    #historical_scraper = ESPNHistoricalScrapper()
+    #historical_scraper.get_historical_fight_info()
+    live_scraper = LiveESPNScraper()
+    asyncio.run(live_scraper.monitor_fight())

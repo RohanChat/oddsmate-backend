@@ -8,7 +8,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
-import scrape_totals
+import utils.scrape_totals as scrape_totals
 import os
 
 # --- Configuration: Replace these with your own API keys ---

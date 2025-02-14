@@ -4,8 +4,8 @@ import datetime
 import asyncio
 
 # Import your scraper implementations.
-from scrape_judges import SyncJudgeScraper
-from fast_scrape_judges import AsyncJudgeScraper
+from utils.scrape_judges import SyncJudgeScraper
+from utils.fast_scrape_judges import AsyncJudgeScraper
 
 class MMAdecisionsScraper:
     """
@@ -74,15 +74,15 @@ if __name__ == "__main__":
     # Instantiate MMAdecisionsScraper in either "sync" or "async" mode.
     scraper = MMAdecisionsScraper(mode="sync")  # or mode="async"
     
-    # Pull the latest event.
-    latest_event = scraper.get_latest_event()
-    if latest_event:
-        timestamp = datetime.datetime.now().isoformat()
-        output_dir = os.path.join(os.path.dirname(__file__), '../../data/raw/judging', timestamp)
-        os.makedirs(output_dir, exist_ok=True)
-        output_path = os.path.join(output_dir, "latest_event.json")
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(latest_event, f, indent=2)
+    # # Pull the latest event.
+    # latest_event = scraper.get_latest_event()
+    # if latest_event:
+    #     timestamp = datetime.datetime.now().isoformat()
+    #     output_dir = os.path.join(os.path.dirname(__file__), '../../data/raw/judging', timestamp)
+    #     os.makedirs(output_dir, exist_ok=True)
+    #     output_path = os.path.join(output_dir, "latest_event.json")
+    #     with open(output_path, "w", encoding="utf-8") as f:
+    #         json.dump(latest_event, f, indent=2)
     
     # # Pull all events from 2021 down to 2000.
     # start_year, end_year = 2021, 2000

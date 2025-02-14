@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 #        # ...
 #
 # Then you can do:
-from scrape_event import main as scrape_event_main
+from .scrape_event import main as scrape_event_main
 from datetime import datetime
 
 def get_event_urls(all_completed_url):
