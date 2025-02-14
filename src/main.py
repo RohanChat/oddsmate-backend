@@ -2,9 +2,10 @@ import argparse
 import os
 import sys
 import asyncio
+from scrapers.stats_scraping.espn_scraper import ESPNHistoricalScrapper, LiveESPNScraper
 from scrapers.judges_scraping.mmadecisions_scraper import MMAdecisionsScraper
-from scrapers.stats_scraping.espn_scraper import ESPNStatsScraper, LiveESPNScraper
-from scrapers.odds_scraping.live_odds import LiveOddsListener
+# from scrapers.stats_scraping.espn_scraper import ESPNStatsScraper, LiveESPNScraper
+# from scrapers.odds_scraping.live_odds import LiveOddsListener
 from scrapers.stats_scraping.ufc_stats_scraper import UFCStatsScraper
 
 def main():
@@ -28,7 +29,7 @@ def main():
 
     if args.scraper == "ESPN":
         if args.mode == "sync":
-            ESPNStatsScraper().get_historical_fight_info()
+            ESPNHistoricalScrapper().get_historical_fight_info()
         elif args.mode == "async":
             print("-- Monitoring live fights --")
             asyncio.run(LiveESPNScraper().monitor_fight())
@@ -40,7 +41,7 @@ def main():
         if args.timeframe == "latest":
             scraper.get_latest_event()
         elif args.timeframe == "historical":
-            scraper.get_events_range(os.getenv("START_YEAR"), os.getenv("END_YEAR"))
+            scraper.get_events_range(int(os.getenv("START_YEAR")), int(os.getenv("END_YEAR")))
         else:
             sys.exit("Error: Invalid timeframe for judge scraper.")
 

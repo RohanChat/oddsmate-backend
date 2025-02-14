@@ -3,8 +3,10 @@ import json
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
-from utils.scrape_bio import scrape_fighter_stats
-from utils.scrape_event import main as scrape_event_main  # assume scrape_event_main(event_url) handles an individual event
+from scrapers.stats_scraping.utils.scrape_bio import scrape_fighter_stats
+from scrapers.stats_scraping.utils.scrape_event import main as scrape_event_main  # assume scrape_event_main(event_url) handles an individual event
+from scrapers.stats_scraping.utils.scrape_totals import scrape_precomp_stats
+
 
 class UFCStatsScraper:
     def __init__(self,

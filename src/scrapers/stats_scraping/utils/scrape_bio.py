@@ -202,7 +202,7 @@ def scrape_fighter_stats(fighter_url):
     return output
 
 # Example usage
-if __name__ == "__main__":
+def main(): 
     fighter_url = "http://ufcstats.com/fighter-details/1338e2c7480bdf9e"  # Example fighter URL
     fighter_stats = scrape_fighter_stats(fighter_url)
     print(json.dumps(fighter_stats, indent=4))

@@ -4,8 +4,8 @@ import datetime
 import asyncio
 
 # Import your scraper implementations.
-from utils.scrape_judges import SyncJudgeScraper
-from utils.fast_scrape_judges import AsyncJudgeScraper
+from .utils.scrape_judges import SyncJudgeScraper
+from .utils.fast_scrape_judges import AsyncJudgeScraper
 
 class MMAdecisionsScraper:
     """
@@ -59,10 +59,10 @@ class MMAdecisionsScraper:
             list: A list of parsed event data dictionaries.
         """
         if self.mode == "sync":
+            print("Running in sync mode", start_year, end_year)
             events = self.judge_scraper.parse_all_events(start_year=start_year, end_year=end_year)
         else:
             events = asyncio.run(self.judge_scraper.run_all(start_year=start_year, end_year=end_year))
-        print(f"Processed {len(events)} events between {start_year} and {end_year}.")
         return events
 
 

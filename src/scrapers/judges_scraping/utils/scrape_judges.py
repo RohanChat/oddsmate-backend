@@ -295,10 +295,10 @@ class SyncJudgeScraper:
         """
         base_url = "https://mmadecisions.com/decisions-by-event/"
         all_events = []
-        for year in range(start_year, end_year - 1, -1):
+        for year in range(end_year, start_year - 1, -1):
             year_url = f"{base_url}{year}/"
             print(f"\n--- Processing events for year: {year} ---")
-            response = requests.get(year_url, headers=self.headers)
+            response = requests.get(year_url, headers=self.headers, timeout=15000)
             if response.status_code != 200:
                 print(f"Failed to retrieve events page for {year} (status code {response.status_code})")
                 continue
