@@ -22,21 +22,25 @@ def main():
     parser.add_argument("--mode", type=str, choices=["sync", "async"], 
                         default=os.getenv("SCRAPER_MODE"), help="Mode to run the scraper in.")
     
-    parser.add_argument("--timeframe", type=str, choices=["upcoming", "latest", "historical"], 
+    parser.add_argument("--timeframe", type=str, choices=["latest", "historical", "upcoming"], 
                         default=os.getenv("SCRAPER_TIMEFRAME", "latest"), help="Timeframe for the scraper.")
 
     args = parser.parse_args()
 
     if args.scraper == "ESPN":
-        if args.mode == "sync":
+        if not args.timeframe:
+            sys.exit("Error: ESPN scraper requires a timeframe.")
+        if args.timeframe == "historical":
             ESPNHistoricalScrapper().get_historical_fight_info()
-        elif args.mode == "async":
+        elif args.timeframe == "latest":
             print("-- Monitoring live fights --")
             asyncio.run(LiveESPNScraper().monitor_fight())
         else:
             sys.exit("Error: ESPN scraper requires a mode.")
 
     elif args.scraper == "judge":
+        if not args.mode:
+            sys.exit("Error: Judge scraper requires a mode.")
         scraper = MMAdecisionsScraper(mode=args.mode)
         if args.timeframe == "latest":
             scraper.get_latest_event()
@@ -50,6 +54,8 @@ def main():
 
     elif args.scraper == "ufcstats":
         scraper = UFCStatsScraper()
+        if not args.timeframe:
+            sys.exit("Error: UFCStats scraper requires a timeframe.")
         if args.timeframe == "upcoming":
             scraper.get_upcoming()
         elif args.timeframe == "latest":

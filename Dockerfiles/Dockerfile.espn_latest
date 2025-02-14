@@ -1,0 +1,17 @@
+# Dockerfile.espn
+FROM python:3.11-slim
+
+# 1. Set a working directory
+WORKDIR /app
+
+# 2. Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# # 3. Copy the code
+COPY scrapers ./scrapers
+COPY main.py .
+COPY . .
+
+# 4. Default command is ESPN historical, for example
+CMD ["python3.11", "main.py", "--scraper", "espn", "--mode", "async", "--timeframe", "latest"]
