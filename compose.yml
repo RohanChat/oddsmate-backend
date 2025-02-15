@@ -1,0 +1,82 @@
+services:
+  espn_historical:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.espn_historical
+    container_name: espn_historical
+    env_file: .env.dev
+    volumes:
+      - .:/app
+    command: python3.11 main.py  --scraper espn --mode  sync --timeframe historical
+  
+  espn_latest:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.espn_latest
+    container_name: espn_latest
+    env_file: .env.dev
+    volumes:
+      - .:/app
+  
+  judges_async_historical:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.judges_async_historical
+    container_name: judges_async_historical
+    env_file: .env.dev
+    volumes:
+      - .:/app
+  
+  judges_async_latest:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.judges_async_latest
+    container_name: judges_async_latest
+    env_file: .env.dev
+    volumes:
+      - .:/app
+  
+  judges_sync_historical:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.judges_sync_historical
+    container_name: judges_sync_historical
+    env_file: .env.dev
+    volumes:
+      - .:/app  
+  
+  judges_sync_latest:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.judges_sync_latest
+    container_name: judges_sync_latest
+    env_file: .env.dev
+    volumes:
+      - .:/app  
+  
+  odds_scraping:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.odds_scraping
+    container_name: odds_scraping
+    env_file: .env.dev
+    volumes:
+      - .:/app
+  
+  ufc_historical:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.ufc_historical
+    container_name: ufc_historical
+    env_file: .env.dev
+    volumes:
+      - .:/app
+  
+  ufc_latest:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.ufc_latest
+    container_name: ufc_latest
+    env_file: .env.dev
+    volumes:
+      - .:/app
