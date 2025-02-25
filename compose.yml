@@ -63,11 +63,11 @@ services:
     volumes:
       - .:/app
   
-  ufc_historical:
+  ufc_upcoming:
     build:
       context: .
-      dockerfile: Dockerfiles/Dockerfile.ufc_historical
-    container_name: ufc_historical
+      dockerfile: Dockerfiles/Dockerfile.ufc_upcoming
+    container_name: ufc_upcoming
     env_file: .env.dev
     volumes:
       - .:/app

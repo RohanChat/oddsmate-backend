@@ -9,8 +9,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # # 3. Copy the code
-COPY scrapers ./scrapers
-COPY main.py .
+COPY src/scrapers ./scrapers
+COPY src/main.py .
 COPY . .
 
 # 4. Default command is ESPN historical, for example
