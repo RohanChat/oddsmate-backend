@@ -4,6 +4,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.espn_historical
     container_name: espn_historical
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app
@@ -14,6 +18,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.espn_latest
     container_name: espn_latest
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app
@@ -23,6 +31,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.judges_async_historical
     container_name: judges_async_historical
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app
@@ -41,6 +53,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.judges_sync_historical
     container_name: judges_sync_historical
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app  
@@ -50,6 +66,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.judges_sync_latest
     container_name: judges_sync_latest
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app  
@@ -59,6 +79,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.odds_scraping
     container_name: odds_scraping
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app
@@ -68,6 +92,10 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.ufc_upcoming
     container_name: ufc_upcoming
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app
@@ -77,6 +105,26 @@ services:
       context: .
       dockerfile: Dockerfiles/Dockerfile.ufc_latest
     container_name: ufc_latest
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+        restart: True
     env_file: .env.dev
     volumes:
       - .:/app
+    
+  postgres_db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER: ${POSTGRES_USER}
+      - POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      - POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    container_name: postgres_db
+    env_file: .env.dev
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
+    networks:
+      - postgres_network
