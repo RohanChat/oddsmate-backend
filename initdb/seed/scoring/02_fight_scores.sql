@@ -1,5 +1,5 @@
 -- Seed data for fight_scores table
--- Generated on 2025-02-27 17:38:29
+-- Generated on 2025-02-27 17:43:40
 
 -- WARNING: This file contains temporary fight IDs (prefixed with 'temp_') that need to be updated
 -- Note: judges table must be populated first
@@ -9943,10 +9943,6 @@ INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fi
 INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_b63e800c18e011b5_1', (SELECT judge_id FROM judges WHERE name = 'Judge1'), 'b63e800c18e011b5', 1, 0);
 INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_b63e800c18e011b5_1', (SELECT judge_id FROM judges WHERE name = 'Judge2'), 'b63e800c18e011b5', 1, 0);
 INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_b63e800c18e011b5_1', (SELECT judge_id FROM judges WHERE name = 'Judge3'), 'b63e800c18e011b5', 1, 0);
--- TEMPORARY FIGHT ID: This is a placeholder fight for event 5af480a3b2e1726b
-INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_5af480a3b2e1726b_1', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), '5af480a3b2e1726b', NULL, NULL);
--- TEMPORARY FIGHT ID: This is a placeholder fight for event dedc3bb440d09554
-INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_dedc3bb440d09554_1', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 'dedc3bb440d09554', NULL, NULL);
 INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_80dbeb1dd5b53e64_1', (SELECT judge_id FROM judges WHERE name = 'Judge1'), '80dbeb1dd5b53e64', 29, 28);
 INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_80dbeb1dd5b53e64_1', (SELECT judge_id FROM judges WHERE name = 'Judge2'), '80dbeb1dd5b53e64', 29, 28);
 INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) VALUES ('temp_80dbeb1dd5b53e64_1', (SELECT judge_id FROM judges WHERE name = 'Judge3'), '80dbeb1dd5b53e64', 27, 30);

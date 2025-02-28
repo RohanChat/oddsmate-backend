@@ -1,5 +1,5 @@
 -- Seed data for round_scores table
--- Generated on 2025-02-27 17:38:29
+-- Generated on 2025-02-27 17:43:40
 
 -- WARNING: This file contains temporary fight IDs (prefixed with 'temp_') that need to be updated
 -- Note: judges table must be populated first
@@ -26380,18 +26380,6 @@ INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_s
 INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_13b2f59210dda9cc_1', '13b2f59210dda9cc', (SELECT judge_id FROM judges WHERE name = 'Judge2'), 4, 10, 9);
 INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_13b2f59210dda9cc_1', '13b2f59210dda9cc', (SELECT judge_id FROM judges WHERE name = 'Judge2'), 5, 10, 9);
 INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_29f935654825331b_2', '29f935654825331b', (SELECT judge_id FROM judges WHERE name = 'Judge3'), 1, 1, 1);
--- TEMPORARY FIGHT ID: This is a placeholder round for event 5af480a3b2e1726b
-INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_5af480a3b2e1726b_1', '5af480a3b2e1726b', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 1, NULL, NULL);
--- TEMPORARY FIGHT ID: This is a placeholder round for event 5af480a3b2e1726b
-INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_5af480a3b2e1726b_1', '5af480a3b2e1726b', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 2, NULL, NULL);
--- TEMPORARY FIGHT ID: This is a placeholder round for event 5af480a3b2e1726b
-INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_5af480a3b2e1726b_1', '5af480a3b2e1726b', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 3, NULL, NULL);
--- TEMPORARY FIGHT ID: This is a placeholder round for event dedc3bb440d09554
-INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_dedc3bb440d09554_1', 'dedc3bb440d09554', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 1, NULL, NULL);
--- TEMPORARY FIGHT ID: This is a placeholder round for event dedc3bb440d09554
-INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_dedc3bb440d09554_1', 'dedc3bb440d09554', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 2, NULL, NULL);
--- TEMPORARY FIGHT ID: This is a placeholder round for event dedc3bb440d09554
-INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_dedc3bb440d09554_1', 'dedc3bb440d09554', (SELECT judge_id FROM judges WHERE name = 'Unknown Judge'), 3, NULL, NULL);
 INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_80dbeb1dd5b53e64_1', '80dbeb1dd5b53e64', (SELECT judge_id FROM judges WHERE name = 'Judge1'), 1, 9, 10);
 INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_80dbeb1dd5b53e64_1', '80dbeb1dd5b53e64', (SELECT judge_id FROM judges WHERE name = 'Judge1'), 2, 10, 9);
 INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) VALUES ('temp_80dbeb1dd5b53e64_1', '80dbeb1dd5b53e64', (SELECT judge_id FROM judges WHERE name = 'Judge1'), 3, 10, 9);

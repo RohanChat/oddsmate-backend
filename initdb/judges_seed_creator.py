@@ -2,8 +2,8 @@
 import os
 import json
 import glob
-import hashlib
 from datetime import datetime
+import hashlib
 
 def sanitize(value):
     """Sanitize a string for SQL insertion"""
@@ -14,17 +14,16 @@ def sanitize(value):
         return f"'{value.replace('\'', '\'\'')}'"
     return str(value)
 
-def generate_temp_fight_id(event_id, judge_name, index):
+def generate_temp_fight_id(event_id, index):
     """Generate a temporary fight ID that's deterministic based on input"""
-    # Create a hash of the inputs to ensure consistency
-    hash_input = f"{event_id}_{judge_name}_{index}"
-    # Use first 16 chars of hash as the ID
+    hash_input = f"{event_id}_{index}"
     temp_id = hashlib.md5(hash_input.encode()).hexdigest()[:16]
     return f"temp_{temp_id}"
 
 def process_json_files():
+    """Process all JSON files and generate SQL seed files"""
     # Initialize collections for SQL statements
-    judges_set = set()
+    judges_set = set()  # Using a set for unique judge names
     judges_sql = []
     fight_scores_sql = []
     round_scores_sql = []
@@ -50,6 +49,11 @@ def process_json_files():
     # Counters for summary
     total_events = 0
     total_fights_with_scores = 0
+    real_judges_count = 0
+    
+    # Try to find any real judge data in files
+    real_judge_data_found = False
+    test_data_being_used = False
     
     # Process each JSON file
     for json_file in json_files:
@@ -71,119 +75,88 @@ def process_json_files():
                 
                 # Check if the event has any actual fights data
                 fights = event.get("fights", [])
-                if not fights:
-                    # This is where we need to generate a synthetic fight entry
-                    # We'll create a single empty placeholder fight
-                    temp_fight_id = f"temp_{event_id}_1"
-                    
-                    # Generate a synthetic judge entry
-                    judge_name = "Unknown Judge"
-                    if judge_name not in judges_set:
-                        judges_set.add(judge_name)
-                        judges_sql.append(
-                            f"INSERT INTO judges (name) VALUES ({sanitize(judge_name)}) ON CONFLICT (name) DO NOTHING;"
-                        )
-                    
-                    # Generate a synthetic fight score with NULL scores
-                    fight_scores_sql.append(
-                        f"-- TEMPORARY FIGHT ID: This is a placeholder fight for event {event_id}\n"
-                        f"INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) "
-                        f"VALUES ({sanitize(temp_fight_id)}, "
-                        f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
-                        f"{sanitize(event_id)}, NULL, NULL);"
-                    )
-                    
-                    # Generate synthetic round scores with NULL scores
-                    for round_number in range(1, 4):  # Assuming 3 rounds
-                        round_scores_sql.append(
-                            f"-- TEMPORARY FIGHT ID: This is a placeholder round for event {event_id}\n"
-                            f"INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) "
-                            f"VALUES ({sanitize(temp_fight_id)}, {sanitize(event_id)}, "
-                            f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
-                            f"{round_number}, NULL, NULL);"
-                        )
-                    
-                    continue
                 
-                # Process real fights data if available
+                # Create a dict to map fights to judges for this event
+                event_fight_judges = {}
+                
+                # For each fight in the event
                 for fight_idx, fight in enumerate(fights):
-                    fight_id = fight.get("fight_id")
-                    
-                    # If no fight_id, generate a temporary one
+                    fight_id = fight.get("fight_id") 
                     if not fight_id:
+                        # Generate a temporary fight ID if not present
                         fight_id = f"temp_{event_id}_{fight_idx + 1}"
-                        print(f"Generated temporary fight ID: {fight_id} for event {event_id}")
                     
-                    # Process judges data
+                    # Extract judge data from the fight
                     judges = fight.get("judges", {})
-                    if not judges:
-                        # No judges data, create one synthetic judge entry
-                        judge_name = f"Unknown Judge"
-                        if judge_name not in judges_set:
-                            judges_set.add(judge_name)
-                            judges_sql.append(
-                                f"INSERT INTO judges (name) VALUES ({sanitize(judge_name)}) ON CONFLICT (name) DO NOTHING;"
-                            )
-                        
-                        # Generate a synthetic fight score
-                        fight_scores_sql.append(
-                            f"-- TEMPORARY JUDGE DATA: This is a placeholder for fight {fight_id}\n"
-                            f"INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) "
-                            f"VALUES ({sanitize(fight_id)}, "
-                            f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
-                            f"{sanitize(event_id)}, NULL, NULL);"
-                        )
-                        continue
-                        
-                    total_fights_with_scores += 1
                     
-                    # Process each judge's scores
-                    for idx, (judge_name, judge_data) in enumerate(judges.items()):
-                        if not judge_name or judge_name == "null" or not judge_data:
-                            # Skip invalid judge entries
-                            continue
-                            
-                        # Add judge to set if new
-                        if judge_name not in judges_set:
-                            judges_set.add(judge_name)
-                            judges_sql.append(
-                                f"INSERT INTO judges (name) VALUES ({sanitize(judge_name)}) ON CONFLICT (name) DO NOTHING;"
-                            )
-                        
-                        # Process total scores
-                        total = judge_data.get("total", {})
-                        fighter1_score = total.get("fighter1", "NULL")
-                        fighter2_score = total.get("fighter2", "NULL")
-                        
-                        # Add fight score record
-                        fight_scores_sql.append(
-                            f"INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) "
-                            f"VALUES ({sanitize(fight_id)}, "
-                            f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
-                            f"{sanitize(event_id)}, {fighter1_score}, {fighter2_score});"
-                        )
-                        
-                        # Process round scores
-                        rounds = judge_data.get("rounds", [])
-                        for round_data in rounds:
-                            round_number = round_data.get("round")
-                            if not round_number:
+                    # If this fight has judge data, process it
+                    if judges and isinstance(judges, dict) and len(judges) > 0:
+                        real_judge_data_found = True
+                        for judge_name, judge_data in judges.items():
+                            if not judge_name or judge_name == "null" or not judge_data:
                                 continue
                                 
-                            fighter1_round_score = round_data.get("fighter1", "NULL")
-                            fighter2_round_score = round_data.get("fighter2", "NULL")
+                            # Add to our set of unique judges
+                            judges_set.add(judge_name)
+                            real_judges_count += 1
                             
-                            round_scores_sql.append(
-                                f"INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) "
-                                f"VALUES ({sanitize(fight_id)}, {sanitize(event_id)}, "
-                                f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
-                                f"{round_number}, {fighter1_round_score}, {fighter2_round_score});"
+                            # Add the SQL for this judge
+                            judges_sql.append(
+                                f"INSERT INTO judges (name) VALUES ({sanitize(judge_name)}) ON CONFLICT (name) DO NOTHING;"
                             )
+                            
+                            # Process total scores
+                            total = judge_data.get("total", {})
+                            fighter1_score = total.get("fighter1", "NULL")
+                            fighter2_score = total.get("fighter2", "NULL")
+                            
+                            fight_scores_sql.append(
+                                f"INSERT INTO fight_scores (fight_id, judge_id, event_id, total_fighter1, total_fighter2) "
+                                f"VALUES ({sanitize(fight_id)}, "
+                                f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
+                                f"{sanitize(event_id)}, {fighter1_score}, {fighter2_score});"
+                            )
+                            
+                            # Process round scores
+                            rounds = judge_data.get("rounds", [])
+                            for round_data in rounds:
+                                round_number = round_data.get("round")
+                                if not round_number:
+                                    continue
+                                    
+                                fighter1_round_score = round_data.get("fighter1", "NULL")
+                                fighter2_round_score = round_data.get("fighter2", "NULL")
+                                
+                                round_scores_sql.append(
+                                    f"INSERT INTO round_scores (fight_id, event_id, judge_id, round_number, fighter1_score, fighter2_score) "
+                                    f"VALUES ({sanitize(fight_id)}, {sanitize(event_id)}, "
+                                    f"(SELECT judge_id FROM judges WHERE name = {sanitize(judge_name)}), "
+                                    f"{round_number}, {fighter1_round_score}, {fighter2_round_score});"
+                                )
+                            
+                            total_fights_with_scores += 1
                 
         except Exception as e:
             print(f"Error processing {json_file}: {e}")
-            import traceback
-            traceback.print_exc()
+    
+    # If we didn't find any real judge data, create sample data
+    if not real_judge_data_found:
+        print("No real judge data found in JSON files. Creating sample data.")
+        test_data_being_used = True
+        
+        # Create a set of realistic judge names for our sample data
+        real_judge_names = [
+            "Derek Cleary", "Sal D'Amato", "Mike Bell", "Chris Lee", 
+            "Eric Colon", "Dave Hagen", "Junichiro Kamijo", "Marcos Rosales",
+            "Douglas Crosby", "Ron McCarthy", "Jeff Mullen", "Tony Weeks"
+        ]
+        
+        # Add our sample judges
+        for judge_name in real_judge_names[:5]:  # Just use the first 5 judges
+            judges_set.add(judge_name)
+            judges_sql.append(
+                f"INSERT INTO judges (name) VALUES ({sanitize(judge_name)}) ON CONFLICT (name) DO NOTHING;"
+            )
     
     # Write the SQL files
     
@@ -192,6 +165,8 @@ def process_json_files():
     with open(judges_file, 'w') as f:
         f.write("-- Seed data for judges table\n")
         f.write(f"-- Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        if test_data_being_used:
+            f.write("-- NOTE: Using realistic sample judge names because no real judge data was found\n\n")
         f.write("-- First clear any existing data\n")
         f.write("TRUNCATE judges CASCADE;\n\n")
         f.write("-- Insert judges data\n")
@@ -203,6 +178,8 @@ def process_json_files():
     with open(fight_scores_file, 'w') as f:
         f.write("-- Seed data for fight_scores table\n")
         f.write(f"-- Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        if test_data_being_used:
+            f.write("-- NOTE: Using sample data because no real judge data was found\n\n")
         f.write("-- WARNING: This file contains temporary fight IDs (prefixed with 'temp_') that need to be updated\n")
         f.write("-- Note: judges table must be populated first\n\n")
         f.write("\n".join(fight_scores_sql))
@@ -213,26 +190,29 @@ def process_json_files():
     with open(round_scores_file, 'w') as f:
         f.write("-- Seed data for round_scores table\n")
         f.write(f"-- Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        if test_data_being_used:
+            f.write("-- NOTE: Using sample data because no real judge data was found\n\n")
         f.write("-- WARNING: This file contains temporary fight IDs (prefixed with 'temp_') that need to be updated\n")
         f.write("-- Note: judges table must be populated first\n\n")
         f.write("\n".join(round_scores_sql))
         f.write("\n")
     
     # Print summary
-    temp_count = sum(1 for line in fight_scores_sql if "TEMPORARY" in line)
     print(f"Processing complete!")
     print(f"Found {total_events} events with IDs")
-    print(f"Generated {len(judges_set)} unique judges")
-    print(f"Generated {len(fight_scores_sql)} fight score records ({temp_count} temporary)")
+    
+    if real_judge_data_found:
+        print(f"Found {total_fights_with_scores} fights with judge scoring")
+        print(f"Generated {len(judges_set)} unique judges from real data")
+    else:
+        print(f"No real judge data found - created {len(judges_set)} sample judges")
+    
+    print(f"Generated {len(fight_scores_sql)} fight score records")
     print(f"Generated {len(round_scores_sql)} round score records")
-    print(f"Generated temporary fight IDs for {temp_count} fights")
     print("\nSeed files created:")
     print(f"- {judges_file}")
     print(f"- {fight_scores_file}")
     print(f"- {round_scores_file}")
-    
-    # Note in the console about schema issues
-    print("\nNOTE: Please fix any schema issues in your create_scoring_tables.sql file.")
 
 if __name__ == "__main__":
     process_json_files()
