@@ -59,6 +59,8 @@ CREATE TABLE fight_stats (
     -- Total Strikes (should equal sum of breakdowns if computed)
     total_strikes_landed         INT,
     total_strikes_attempted      INT,
+    total_strikes_accuracy      NUMERIC,
+
 
     -- Takedowns
     td_landed                    INT,
@@ -80,8 +82,6 @@ CREATE TABLE round_stats (
     fight_id                    TEXT REFERENCES fights(fight_id),
     fighter_id                  TEXT REFERENCES fighters(fighter_id),
     round_number                INT,
-
-    time INT,  -- Time elapsed in the round
     
     -- Knockdowns for the round
     kd                          INT,
@@ -126,7 +126,7 @@ CREATE TABLE round_stats (
     -- Control Time: stored as an INTERVAL (e.g., converting "129" seconds into an interval)
     ctrl                   INT,
     
-    PRIMARY KEY (fight_id, fighter_id, round_number, time)
+    PRIMARY KEY (fight_id, fighter_id, round_number)
 );
 
 

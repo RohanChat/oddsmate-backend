@@ -22,24 +22,8 @@ CREATE TABLE fighter_stats {
     draws INT,
     win_streak INT,
     prev_fights INT,
-    sig_strikes_landed_per_min NUMERIC,
-    sig_strikes_accuracy NUMERIC,
-    sig_strikes_absorbed_permin NUMERIC,
-    td_landed_avg NUMERIC,
-    td_accuracy NUMERIC,
-    td_def NUMERIC,
-    sub_attempts_avg NUMERIC
-}
-
-CREATE INDEX idx_fighter_stats_fighter_id ON fighter_stats(fighter_id);
-CREATE INDEX idx_fighter_stats_timestamp ON fighter_stats(timestamp);
-
-CREATE TABLE pre_comp_stats (
-    fight_id                TEXT REFERENCES fights(fight_id),
-    fighter_id              TEXT REFERENCES fighters(fighter_id),
-    stat_type               TEXT NOT NULL,  -- e.g. 'overall' or 'recent'
     
-    -- Knockdowns
+        -- Knockdowns
     knockdowns_avg          NUMERIC,
     knockdowns_diff         NUMERIC,
     
@@ -72,6 +56,7 @@ CREATE TABLE pre_comp_stats (
     sig_strikes_landed_avg  NUMERIC,
     sig_strikes_landed_diff NUMERIC,
     sig_strikes_landed_per_min NUMERIC,
+    sig_strikes_absorbed_permin NUMERIC,
     sig_strikes_attempts_avg NUMERIC,
     sig_strikes_attempts_diff NUMERIC,
     sig_strikes_attempts_per_min NUMERIC,
@@ -168,6 +153,8 @@ CREATE TABLE pre_comp_stats (
     physicals_reach_diff    NUMERIC,
     physicals_height_diff   NUMERIC,
     physicals_age_diff      NUMERIC,
-    
-    PRIMARY KEY (fight_id, fighter_id, stat_type)
-);
+}
+
+-- CREATE INDEX idx_fighter_stats_fighter_id ON fighter_stats(fighter_id);
+-- CREATE INDEX idx_fighter_stats_timestamp ON fighter_stats(timestamp);
+
