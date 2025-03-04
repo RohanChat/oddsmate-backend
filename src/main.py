@@ -4,8 +4,7 @@ import sys
 import asyncio
 from scrapers.stats_scraping.espn_scraper import ESPNHistoricalScrapper, LiveESPNScraper
 from scrapers.judges_scraping.mmadecisions_scraper import MMAdecisionsScraper
-# from scrapers.stats_scraping.espn_scraper import ESPNStatsScraper, LiveESPNScraper
-# from scrapers.odds_scraping.live_odds import LiveOddsListener
+from scrapers.odds_scraping.live_odds import LiveOddsListener
 from scrapers.stats_scraping.ufc_stats_scraper import UFCStatsScraper
 
 def main():
