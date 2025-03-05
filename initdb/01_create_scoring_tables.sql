@@ -12,7 +12,9 @@ CREATE TABLE fight_scores (
   judge_id INT REFERENCES judges(judge_id),
   event_id TEXT REFERENCES events(event_id),
   total_fighter1 INT,
+  fighter1_name TEXT,
   total_fighter2 INT,
+  fighter2_name TEXT,
   PRIMARY KEY (fight_id, event_id, judge_id)
 );
 
@@ -22,6 +24,8 @@ CREATE TABLE round_scores (
   judge_id INT REFERENCES judges(judge_id),
   round_number INT,
   fighter1_score INT,
+  fighter1_name TEXT,
   fighter2_score INT,
+  fighter2_name TEXT,
   PRIMARY KEY (fight_id, event_id, judge_id, round_number)
 );
