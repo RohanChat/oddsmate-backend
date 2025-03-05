@@ -7,11 +7,11 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app
-    command: python3.11 main.py  --scraper espn --mode  sync --timeframe historical
+    command: python3.11 src/main.py  --scraper espn --mode  sync --timeframe historical
   
   espn_latest:
     build:
@@ -21,10 +21,12 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app
+    command: python3.11 src/main.py  --scraper espn --mode  sync --timeframe latest
+
   
   judges_async_historical:
     build:
@@ -34,19 +36,23 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app
+    command: python3.11 src/main.py  --scraper judge --mode  async --timeframe historical
+
   
   judges_async_latest:
     build:
       context: .
       dockerfile: Dockerfiles/Dockerfile.judges_async_latest
     container_name: judges_async_latest
-    env_file: .env.dev
+    env_file: .env
     volumes:
       - .:/app
+    command: python3.11 src/main.py  --scraper judge --mode  async --timeframe latest
+
   
   judges_sync_historical:
     build:
@@ -56,10 +62,12 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app  
+    command: python3.11 -u src/main.py  --scraper judge --mode  sync --timeframe historical
+
   
   judges_sync_latest:
     build:
@@ -69,10 +77,12 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app  
+    command: python3.11 src/main.py  --scraper judge --mode  sync --timeframe latest
+
   
   odds_scraping:
     build:
@@ -82,10 +92,12 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app
+    command: python3.11 src/main.py  --scraper odds
+
   
   ufc_upcoming:
     build:
@@ -95,10 +107,12 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app
+    command: python3.11 src/main.py  --scraper ufcstats --timeframe upcoming
+
   
   ufc_latest:
     build:
@@ -108,32 +122,30 @@ services:
     depends_on:
       postgres_db:
         condition: service_healthy
-        restart: True
-    env_file: .env.dev
+        restart: true
+    env_file: .env
     volumes:
       - .:/app
+    command: python3.11 src/main.py  --scraper ufcstats  --timeframe latest
+
     
   postgres_db:
     image: postgres:14
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     ports:
       - "5432:5432"
-    container_name: postgres_dbx
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    env_file: .env.dev
+    container_name: postgres_db
+    env_file: .env
     volumes:
       - ./pgdata:/var/lib/postgresql/data
       - ./initdb:/docker-entrypoint-initdb.d
-    networks:
-      - postgres_network
-  
-networks:
-  postgres_network:
-    driver: bridge
+    # networks:
+    #   - postgres_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

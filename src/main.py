@@ -15,7 +15,7 @@ def main():
     """
     parser = argparse.ArgumentParser(description="Run UFC scrapers with different modes.")
     
-    parser.add_argument("--scraper", type=str, choices=["ESPN", "ufcstats", "judge", "odds"], 
+    parser.add_argument("--scraper", type=str, choices=["espn", "ufcstats", "judge", "odds"], 
                         default=os.getenv("SCRAPER_TYPE"), required=True, help="Which scraper to run.")
     
     parser.add_argument("--mode", type=str, choices=["sync", "async"], 
@@ -26,7 +26,7 @@ def main():
 
     args = parser.parse_args()
 
-    if args.scraper == "ESPN":
+    if args.scraper == "espn":
         if not args.timeframe:
             sys.exit("Error: ESPN scraper requires a timeframe.")
         if args.timeframe == "historical":
