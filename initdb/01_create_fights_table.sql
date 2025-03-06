@@ -13,6 +13,8 @@ CREATE TABLE fights (
   referee TEXT,
   fighter1_id TEXT REFERENCES fighters(fighter_id),
   fighter2_id TEXT REFERENCES fighters(fighter_id),
+  fighter1_result TEXT,
+  fighter2_result TEXT,
   final_method TEXT         -- updated when fight concludes
 );
 

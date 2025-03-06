@@ -84,19 +84,19 @@ services:
     command: python3.11 src/main.py  --scraper judge --mode  sync --timeframe latest
 
   
-  odds_scraping:
-    build:
-      context: .
-      dockerfile: Dockerfiles/Dockerfile.odds_scraping
-    container_name: odds_scraping
-    depends_on:
-      postgres_db:
-        condition: service_healthy
-        restart: true
-    env_file: .env
-    volumes:
-      - .:/app
-    command: python3.11 src/main.py  --scraper odds
+  # odds_scraping:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfiles/Dockerfile.odds_scraping
+  #   container_name: odds_scraping
+  #   depends_on:
+  #     postgres_db:
+  #       condition: service_healthy
+  #       restart: true
+  #   env_file: .env
+  #   volumes:
+  #     - .:/app
+  #   command: python3.11 src/main.py  --scraper odds
 
   
   ufc_upcoming:
